@@ -6,12 +6,12 @@ export default function Settings() {
     <div className="flex-1 flex border-t -mx-5 ">
       <div className="mx-auto w-7/12 bg-white-50 flex space-y-8 border-gray-100 px-5">
         <div className="w-full flex flex-col space-y-6 ">
-          <h1 className="text-2xl pt-5 font-bold ">Edit Profile</h1>
+          <h1 className="text-xl pt-5 font-bold ">Edit Profile</h1>
           <div className="pt-8 grid md:grid-cols-2 gap-8">
             <div className="col-span-3 w-full h-auto shadow-lg shadow-gray-300 rounded-xl lg:p-4">
               <div className="p-4">
                 <form method="POST">
-                  <div className="flex justify-center items-center my-4 ">
+                  <div className="flex justify-center items-center ">
                     <div className="avatar online">
                       <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img

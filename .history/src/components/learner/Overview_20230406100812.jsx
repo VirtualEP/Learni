@@ -1,5 +1,7 @@
 import React from "react";
+import { overviewData } from "../../data/overviewData";
 import { upcomingTest } from "../../data/upcomingTest";
+import OverviewCard from "../card/OverviewCard";
 import UpcomingTestCard from "../card/UpcomingTestCard";
 
 export default function Overview() {
@@ -65,7 +67,17 @@ export default function Overview() {
             <div className="stat-desc text-secondary">31 tasks remaining</div>
           </div>
         </div>
- 
+        {/* <div className="w-full  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {overviewData.map((overview, i) => (
+            <div key={i}>
+              <OverviewCard
+                title={overview.title}
+                color={overview.color}
+                desc={overview.count}
+              />
+            </div>
+          ))}
+        </div> */}
 
         {/* Course table */}
         <div className="mt-5">

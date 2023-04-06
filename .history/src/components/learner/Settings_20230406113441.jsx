@@ -11,7 +11,7 @@ export default function Settings() {
             <div className="col-span-3 w-full h-auto shadow-lg shadow-gray-300 rounded-xl lg:p-4">
               <div className="p-4">
                 <form method="POST">
-                  <div className="flex justify-center items-center my-4 ">
+                  <div className="flex justify-center items-center ">
                     <div className="avatar online">
                       <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                         <img

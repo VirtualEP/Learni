@@ -1,5 +1,7 @@
 import React from "react";
+import { overviewData } from "../../data/overviewData";
 import { upcomingTest } from "../../data/upcomingTest";
+import OverviewCard from "../card/OverviewCard";
 import UpcomingTestCard from "../card/UpcomingTestCard";
 
 export default function Overview() {

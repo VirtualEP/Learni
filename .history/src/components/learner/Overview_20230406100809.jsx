@@ -1,10 +1,12 @@
 import React from "react";
+import { overviewData } from "../../data/overviewData";
 import { upcomingTest } from "../../data/upcomingTest";
+import OverviewCard from "../card/OverviewCard";
 import UpcomingTestCard from "../card/UpcomingTestCard";
 
 export default function Overview() {
   return (
-    <div className="flex-1 flex border-t -mx-5">
+    <di className="flex-1 flex border-t -mx-5 ">
       <div className="w-3/4 border-r bg-white-50 flex flex-col  space-y-8 border-gray-100 px-5">
         <h1 className="text-2xl pt-5 font-bold">Overview</h1>
         <div className="stats shadow">
@@ -65,7 +67,17 @@ export default function Overview() {
             <div className="stat-desc text-secondary">31 tasks remaining</div>
           </div>
         </div>
- 
+        {/* <div className="w-full  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {overviewData.map((overview, i) => (
+            <div key={i}>
+              <OverviewCard
+                title={overview.title}
+                color={overview.color}
+                desc={overview.count}
+              />
+            </div>
+          ))}
+        </div> */}
 
         {/* Course table */}
         <div className="mt-5">
