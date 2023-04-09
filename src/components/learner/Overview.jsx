@@ -1,6 +1,7 @@
 import React from "react";
 import { upcomingTest } from "../../data/upcomingTest";
 import UpcomingTestCard from "../card/UpcomingTestCard";
+import { Link } from "react-router-dom";
 
 export default function Overview() {
   return (
@@ -125,9 +126,9 @@ export default function Overview() {
             ))}
           </div>
           <div>
-            <button className="rounded-3xl justify-center px-4 py-3 my-4 font-bold w-full mx-auto flex items-center bg-blue-600 text-white">
+            <Link to ="/upcoming-tests" className="rounded-3xl justify-center px-4 py-3 my-4 font-bold w-full mx-auto flex items-center bg-blue-600 text-white">
               See All Upcoming Tests
-            </button>
+            </Link>
           </div>
         </div>
 

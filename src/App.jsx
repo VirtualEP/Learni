@@ -16,6 +16,7 @@ import CoursesList from "./components/learner/CoursesList"
 import CourseInfo from "./components/learner/CourseInfo"
 import Explore from "./components/learner/Explore"
 import Landing from "./pages/landing"
+import UpcomingTests from "./pages/dashboard/UpcomingTests"
 
 
 export const VITE_CLIENT_ID = "1065813839939-vp30ql16pu5nbatco90snth2b6sr8b41.apps.googleusercontent.com";
@@ -40,6 +41,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Landing/>}/>
           <Route path="/signup-options" element={<SignupOptions />} />
+          <Route path="/upcoming-tests" element={<UpcomingTests />}/>
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >

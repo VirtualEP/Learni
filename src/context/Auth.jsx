@@ -47,7 +47,7 @@ export default function AuthContextProvider({ children }) {
     }
 
     useEffect(() => {
-        setIsAuthenticated(true)
+        setIsAuthenticated(localUser ? true : false)
     }, [localUser])
 
 

@@ -3,7 +3,12 @@ import { NavLink } from "react-router-dom";
 
 export default function Settings() {
   return (
-    <div className="flex-1 flex border-t -mx-5 ">
+    <div className="flex-1 flex border-t -mx-5">
+      <ul className="steps steps-vertical justify-center">
+        <li className="step step-secondary cursor-pointer">Profile</li>
+        <li className="step cursor-pointer">Choose plan</li>
+        <li className="step cursor-pointer">Make Payment</li>
+      </ul>
       <div className="mx-auto w-7/12 bg-white-50 flex space-y-8 border-gray-100 px-5">
         <div className="w-full flex flex-col space-y-6 ">
           <h1 className="text-2xl pt-5 font-bold ">Edit Profile</h1>
@@ -55,39 +60,10 @@ export default function Settings() {
                       type="email"
                     />
                   </div>
-                  <div className="flex flex-col py-2">
-                    <label className="text-sm uppercase py-2">
-                      Old Password
-                    </label>
-                    <input
-                      className="border-2 rounded-lg bg-white   p-3 flex border-blue-100"
-                      required
-                      type="password"
-                    />
-                  </div>
-                  <div className="flex flex-col py-2">
-                    <label className="text-sm uppercase py-2">
-                      New Password
-                    </label>
-                    <input
-                      className="border-2 rounded-lg bg-white   p-3 flex border-blue-100"
-                      required
-                      type="password"
-                    />
-                  </div>
+
                   <div className="flex flex-col py-2">
                     <label className="text-sm uppercase py-2">
                       Contact Number
-                    </label>
-                    <input
-                      className="border-2 rounded-lg bg-white   p-3 flex border-blue-100"
-                      required
-                      type="text"
-                    />
-                  </div>
-                  <div className="flex flex-col py-2">
-                    <label className="text-sm uppercase py-2">
-                      Country
                     </label>
                     <input
                       className="border-2 rounded-lg bg-white   p-3 flex border-blue-100"
