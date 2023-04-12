@@ -33,11 +33,25 @@ function Navbar() {
     >
       <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold cursor-pointer capitalize">
-            Lear<span className="text-blue-600 lowercase">ni</span>
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-300 mr-2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+              />
+            </svg>
+          <h1 className="text-2xl font-bold cursor-pointer">
+            i<span className="text-blue-600 ">Learn</span>{" "}
           </h1>
           {/* MENU ITEMS */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center justify-center">
             <ul style={{ color: `${Color}` }} className="hidden md:flex">
               <a href="/#home">
                 <li className="ml-10 text-md  border-b-4 hover:border-blue-600">
@@ -63,7 +77,7 @@ function Navbar() {
               Sign In
             </button>
           </a>
-          <a href="/signup-options">
+          <a href="/signup">
             <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign Up
             </button>
@@ -90,8 +104,8 @@ function Navbar() {
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <h1 className="text-2xl cursor-pointer font-bold capitalize">
-                Lear<span className="text-blue-600 lowercase">ni</span>
+              <h1 className="text-2xl cursor-pointer font-bold">
+                i<span className="text-blue-600 ">Learn</span>{" "}
               </h1>
               <div
                 onClick={handleOpen}

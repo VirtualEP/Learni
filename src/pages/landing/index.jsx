@@ -12,7 +12,7 @@ function Landing() {
     <div>
         <Navbar/>
         <Banner/>
-        <SubBanner/>
+        {/* <SubBanner/> */}
         <CourseCategories/>
         <PopularCourses/>
         <Mentors/>

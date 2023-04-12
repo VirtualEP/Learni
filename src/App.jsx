@@ -15,6 +15,11 @@ import Settings from "./components/learner/Settings"
 import CoursesList from "./components/learner/CoursesList"
 import CourseInfo from "./components/learner/CourseInfo"
 import Explore from "./components/learner/Explore"
+import CourseSummary from "./components/learner/CourseSummary"
+import CourseLessons from "./components/learner/CourseLessons"
+import CourseExercise from "./components/learner/CourseExercise"
+import CourseQna from "./components/learner/CourseQna"
+import Channel from "./components/learner/Channel"
 import Landing from "./pages/landing"
 
 
@@ -38,8 +43,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing/>}/>
-          <Route path="/signup-options" element={<SignupOptions />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >
@@ -49,10 +53,11 @@ export default function App() {
             <Route path="courses" element={<Courses />} >
               <Route path="" element={<CoursesList />} />
               <Route path=":id" element={<CourseInfo />} >
-                <Route path="summary"  />
-                <Route path="lessons"  />
-                <Route path="exercises" />
-                <Route path="qna"  />
+                <Route path="summary" element={<CourseSummary />} />
+                <Route path="channel" element={<Channel />} />
+                <Route path="lessons" element={<CourseLessons />} />
+                <Route path="exercises" element={<CourseExercise />} />
+                <Route path="qna" element={<CourseQna />} />
               </Route>
             </Route>
             <Route path="messages" element={<Messages />} />

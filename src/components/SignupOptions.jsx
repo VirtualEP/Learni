@@ -12,8 +12,8 @@ function SignupOptions({ setAccountType }) {
         <div className="w-full max-w-[700px] m-auto bg-white rounded-lg py-10 px-16 border-2">
           <div className=" ">
             <div className="flex items-center justify-center  mb-4">
-              <a href="/" className="text-4xl font-bold capitalize ">
-                Lear<span className="text-blue-600 lowercase">ni</span>
+              <a href="/" className="text-4xl font-bold">
+                i<span className="text-blue-600 ">Learn</span>{" "}
               </a>
             </div>
             <div>
