@@ -73,8 +73,8 @@ export default function Overview() {
           <div className="overflow-x-auto mt-5 bg-grey shadow-lg p-8 rounded-md">
             <table className=" w-full text-black ">
               {/* head */}
-              <thead className="p-8">
-                <tr className="p-8">
+              <thead>
+                <tr className="p-8 border-b-2">
                   <th>Course Title</th>
                   <th>Lesson Completed</th>
                   <th>Duration</th>
@@ -83,21 +83,21 @@ export default function Overview() {
               </thead>
               <tbody>
                 {/* row 1 */}
-                <tr className="p-8">
+                <tr className="p-8 border-b-2">
                   <th>UX design certificate</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
                   <td className="text-center">Ricky</td>
                 </tr>
                 {/* row 2 */}
-                <tr>
+                <tr className="p-8 border-b-2">
                   <th>SEO Expert from Zero</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
                   <td className="text-center">Ricky</td>
                 </tr>
                 {/* row 3 */}
-                <tr>
+                <tr className="">
                   <th className="p-8">Project Management</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
@@ -131,7 +131,7 @@ export default function Overview() {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <div className="bg-white shadow-lg p-4 mx-4 rounded-md mt-5">
             <h1 className="text-2xl pt-5 font-bold px-4">Community Groups</h1>
             <div className="mt-5">
@@ -146,7 +146,7 @@ export default function Overview() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

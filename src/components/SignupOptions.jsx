@@ -70,7 +70,7 @@ function SignupOptions({ setAccountType }) {
             <div className="w-full text-center">
               <p className="pt-10">
                 <span className="text-zinc-400">Already have an account?</span>{" "}
-                <Link to="/signin" className="cursor-pointer">
+                <Link to="/signin" className="cursor-pointer underline">
                   Login here
                 </Link>
               </p>

@@ -23,7 +23,7 @@ export default function AuthContextProvider({ children }) {
 
     const login = (email, password) => {
         setLoading(true)
-        if (!email || !password || email === '' || password === '') return toast("Email and password fields can not be empty.", "Authentication Error", { leading: false, color: 'red' });
+        if (!email || !password || email === '' || password === '') return toast("Email and password fields cannot be empty.", "Authentication Error", { leading: false, color: 'red' });
         signin({ email, password }).then((data) => {
             console.log(data);
             setUser(data);
@@ -42,7 +42,7 @@ export default function AuthContextProvider({ children }) {
         if (!email || !password || !firstName || !lastName || !country || !type || email === '' || password === '' || firstName === '' || lastName === '' || country === '' || type === '') return toast("Can't have any field empty.", "Form Error", { leading: false });
         signup({ email, password, firstName, lastName, country, type })
             .then((data) => { setUser(data); return toast("Account registration completed successfully.", "Authentication Complete", { leading: false }); })
-            .catch((error) => { setUser(null); return toast("Signin could not be completed. " + error.response.data.message, "Authentication Failled", { leading: false, color: 'red' }); })
+            .catch((error) => { setUser(null); return toast("Signin could not be completed. " + error.response.data.message, "Authentication Failed", { leading: false, color: 'red' }); })
             .finally(() => setLoading(false))
     }
 
