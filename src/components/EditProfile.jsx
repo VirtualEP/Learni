@@ -14,13 +14,16 @@ function EditProfile() {
             <div className="p-4">
               <form method="POST">
                 <div className="flex justify-center items-center my-4 ">
-                  <div className="avatar online">
-                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                      <img
-                        src={
-                          "https://images.unsplash.com/photo-1543278732-824a807df8bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-                        }
-                      />{" "}
+                  <div className="avatar online placeholder">
+                    <div className="bg-neutral-focus text-neutral-content rounded-full w-20 cursor-pointer">
+                      <span className="text-xl">
+                        {user.user.firstName
+                          .match(/(\b\S)?/g)
+                          .join("")
+                          .match(/(^\S|\S$)?/g)
+                          .join("")
+                          .toUpperCase()}
+                      </span>
                     </div>
                   </div>
                 </div>

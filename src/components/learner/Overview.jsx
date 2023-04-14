@@ -1,8 +1,11 @@
 import React from "react";
 import { upcomingTest } from "../../data/upcomingTest";
 import UpcomingTestCard from "../card/UpcomingTestCard";
+import { useAuthContext } from "../../context/Auth";
 
 export default function Overview() {
+  const { user } = useAuthContext();
+
   return (
     <div className="flex-1 flex border-t -mx-5">
       <div className="w-3/4 border-r bg-white-50 flex flex-col  space-y-8 border-gray-100 px-5">
@@ -49,17 +52,6 @@ export default function Overview() {
           </div>
 
           <div className="stat">
-            <div className="stat-figure text-secondary">
-              <div className="avatar online">
-                <div className="w-16 rounded-full">
-                  <img
-                    src={
-                      "https://images.unsplash.com/photo-1543278732-824a807df8bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
-                    }
-                  />
-                </div>
-              </div>
-            </div>
             <div className="stat-value">86%</div>
             <div className="stat-title">Tasks done</div>
             <div className="stat-desc text-secondary">31 tasks remaining</div>

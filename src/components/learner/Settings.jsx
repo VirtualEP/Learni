@@ -5,7 +5,6 @@ import { useAuthContext } from "../../context/Auth";
 import EditProfile from "../EditProfile";
 
 export default function Settings() {
-  const [editUser, setEditUser] = useState(false);
 
   const menuList = [
     { id: 1, name: "Profile" },
