@@ -11,6 +11,10 @@ function MakePayment() {
             <div class="bg-blue-600 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                 <BsCashStack size={35} />
             </div>
+            <div className="px-4 pt-4">
+                <p>iLearn currently accepts payment via Mobile Money across all networks</p>
+
+            </div>
             <div className="p-4">
                 <form method="POST">
                 <div className="flex flex-col py-2">

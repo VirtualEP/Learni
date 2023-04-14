@@ -13,7 +13,7 @@ export default function AuthContextProvider({ children }) {
 
     const toast = useNotifyHook()
 
-    const { signin, signup } = useApiHook()
+    const { signin, signup, editProfile } = useApiHook()
 
     const { localUser, setUser } = useAuthHook();
 
@@ -49,6 +49,14 @@ export default function AuthContextProvider({ children }) {
     useEffect(() => {
         setIsAuthenticated(localUser ? true : false)
     }, [localUser])
+
+    const updateProfile = ({email, firstName, lastName}) => {
+        setLoading(true)
+        if(!firstName, !lastName, !email){
+
+        }
+
+    }
 
 
     return (

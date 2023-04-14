@@ -70,11 +70,11 @@ export default function Overview() {
         {/* Course table */}
         <div className="mt-5">
           <h1 className="text-2xl pt-5 font-bold">Courses you are taking</h1>
-          <div className="overflow-x-auto mt-5 bg-grey shadow-lg p-8 rounded-md">
+          <div className="overflow-x-auto mt-5 bg-grey shadow-lg  rounded-md">
             <table className=" w-full text-black ">
               {/* head */}
               <thead>
-                <tr className="p-8 border-b-2">
+                <tr className="p-8">
                   <th>Course Title</th>
                   <th>Lesson Completed</th>
                   <th>Duration</th>
@@ -83,21 +83,21 @@ export default function Overview() {
               </thead>
               <tbody>
                 {/* row 1 */}
-                <tr className="p-8 border-b-2">
+                <tr className="p-8 border-b-2 bg-blue-50">
                   <th>UX design certificate</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
                   <td className="text-center">Ricky</td>
                 </tr>
                 {/* row 2 */}
-                <tr className="p-8 border-b-2">
+                <tr className="p-8 border-b-2 ">
                   <th>SEO Expert from Zero</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
                   <td className="text-center">Ricky</td>
                 </tr>
                 {/* row 3 */}
-                <tr className="">
+                <tr className="bg-blue-50">
                   <th className="p-8">Project Management</th>
                   <td className="p-8 text-center">18/40 (48%)</td>
                   <td className="text-center">24h 13m 28s</td>
@@ -126,27 +126,10 @@ export default function Overview() {
           </div>
           <div>
             <button className="rounded-3xl justify-center px-4 py-3 my-4 font-bold w-full mx-auto flex items-center bg-blue-600 text-white">
-              See All Upcoming Tests
+              See All
             </button>
           </div>
         </div>
-
-        {/* <div>
-          <div className="bg-white shadow-lg p-4 mx-4 rounded-md mt-5">
-            <h1 className="text-2xl pt-5 font-bold px-4">Community Groups</h1>
-            <div className="mt-5">
-              {upcomingTest.map((test, i) => (
-                <div key={i}>
-                  <UpcomingTestCard
-                    title={test.title}
-                    desc={test.testCount}
-                    date={test.date}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -9,6 +9,12 @@ export default function Topbar() {
 
   const [profileOptions, setProfileOptions] = useState(false)
 
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload('/signin');
+  };
+
+
   return (
     <div className='flex items-center mb-5 relative'>
       <div className=" flex bg-gray-100 items-center rounded-lg w-2/4 overflow-hidden space-x-2 px-3 py-2">
@@ -50,7 +56,7 @@ export default function Topbar() {
 
                     <p>Support</p>
                   </Link>
-                  <button onClick={e=>localStorage.clear()} to="" className='flex items-center text-xs space-x-3 hover:font-semibold transition-all hover:transition-all delay-75 hover:text-red-500 capitalize'>
+                  <button onClick={handleLogout}  to="" className='flex items-center text-xs space-x-3 hover:font-semibold transition-all hover:transition-all delay-75 hover:text-red-500 capitalize'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>

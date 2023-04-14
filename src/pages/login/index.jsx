@@ -5,10 +5,16 @@ import { useAuthContext } from "../../context/Auth";
 import GoogleLogin from "react-google-login";
 import LoadingIcon from "../../components/LoadingIcon";
 import { VITE_CLIENT_ID } from "../../App";
-import student  from "../../assets/student.png";
+import student from "../../assets/student.png";
+import { useState } from "react";
 
 export default function Login() {
   const { login, loading } = useAuthContext();
+  const [close, setClose] = useState(false);
+
+  const handleClose = () => {
+    setClose(true);
+  };
 
   const onSignInWithForm = (e) => {
     e.preventDefault();
@@ -24,7 +30,7 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-      <div className="max-w-screen-lg sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+      <div className="max-w-screen-lg lg:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
           <div>
             <a href="/">
@@ -69,7 +75,7 @@ export default function Login() {
                   <button
                     disabled={loading}
                     type="submit"
-                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                    className="mt-5 tracking-wide font-semibold bg-blue-600 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
                     {loading && <LoadingIcon />}
                     {/* <svg
@@ -99,12 +105,45 @@ export default function Login() {
                 </Link>
               </div>
               <div className="flex justify-center mt-2">
-                <a
-                  className="font-bold text-xs underline text-gray-400"
+                <label
+                  className="font-bold text-xs underline text-gray-400 cursor-pointer"
                   href="#"
+                  htmlFor="my-modal-4"
                 >
                   Forgot Password?
-                </a>
+                </label>
+                <input
+                  type="checkbox"
+                  id="my-modal-4"
+                  className="modal-toggle"
+                />
+                <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                  <label className="modal-box bg-white relative" htmlFor="">
+                    <h3 className="text-lg font-bold">Reset Password </h3>
+                    <p className="py-2">
+                      You will receive an email to reset your password
+                    </p>
+                    <form method="POST">
+                      <div className="flex flex-col py-2 mt-2">
+                        <input
+                          className="border-2 rounded-lg bg-white  p-3 flex border-blue-100"
+                          name="email"
+                          required
+                          type="email"
+                          placeholder="Enter your email"
+                        />
+                      </div>
+                      <div className="modal-action">
+                        <button
+                          htmlFor="my-modal-6"
+                          className="btn bg-blue-600 border-none text-white"
+                        >
+                          Send mail
+                        </button>
+                      </div>
+                    </form>
+                  </label>
+                </label>
               </div>
             </div>
           </div>
