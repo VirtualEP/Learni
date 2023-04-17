@@ -16,7 +16,7 @@ function EditProfile() {
                 <div className="flex justify-center items-center my-4 ">
                   <div className="avatar online placeholder">
                     <div className="bg-neutral-focus text-neutral-content rounded-full w-20 cursor-pointer">
-                      <span className="text-xl">
+                      <span className="text-2xl text-white">
                         {user.user.firstName
                           .match(/(\b\S)?/g)
                           .join("")

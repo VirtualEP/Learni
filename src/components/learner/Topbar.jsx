@@ -46,7 +46,7 @@ export default function Topbar() {
         >
           <div className="avatar online placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
-              <span className="text-xl">
+              <span className="text-xl text-white">
                 {user.user.firstName
                   .match(/(\b\S)?/g)
                   .join("")
