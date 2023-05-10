@@ -87,7 +87,7 @@ export default function LearnerSideBar() {
           />
         </svg>}
           to={"explore"}
-          lock={'student'}
+          lock={'learner'}
           title={"explore"} />
         <SideNavLink Icon={() => <svg
           xmlns="http://www.w3.org/2000/svg"

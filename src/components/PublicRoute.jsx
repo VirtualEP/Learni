@@ -11,7 +11,7 @@ export default function PublicRoute({ children }) {
     if (isAuthenticated) {
         if (user.user.accountType === 'learner'){
 
-            return <Navigate to="/dashboard" replace />;
+            return <Navigate to="/dashboard/courses" replace />;
 
         }
         if (user.user.accountType === 'instructor'){

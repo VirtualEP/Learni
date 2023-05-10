@@ -1,6 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useServerHook } from "../../hooks/useServerHook";
+import { usePaystackPayment } from 'react-paystack';
+import { useAuthContext } from "../../context/Auth";
 
 export default function ExploreInfo({ data }) {
+
+  const { getTopics } = useServerHook()
+  const [loading, setLoading] = useState(false)
+  const [topics, setTopics] = useState([])
+
+  const { user } = useAuthContext();
+
+  useEffect(() => {
+    setLoading(true)
+    getTopics(data._id).then((response) => {
+      setTopics(response.data.topics)
+    }).finally(() => setLoading(false))
+  }, [data])
+
+  const paymentConfig = {
+    reference: (new Date()).getTime().toString(),
+    email: user.user.email,
+    currency:'GHS',
+    amount: parseFloat(data.price)*100.0, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
+    publicKey: 'pk_test_c9b2d8522d0c769680f54766434c0df0202bc204',
+  };
+
+  const initializePayment = usePaystackPayment(paymentConfig);
+
+  
+  function initializePaymentAction() {
+
+    // you can call this function anything
+    const onSuccess = (reference) => {
+      // Implementation for whatever you want to do with reference and after success call.
+      console.log(reference);
+    };
+
+    // you can call this function anything
+    const onClose = () => {
+      // implementation for  whatever you want to do when the Paystack dialog closed.
+      console.log('closed')
+    }
+
+    initializePayment(onSuccess, onClose)
+
+  }
+
   return (
     <>
       <div className="flex-1 flex flex-col overflow-hidden overflow-y-auto">
@@ -80,12 +126,7 @@ export default function ExploreInfo({ data }) {
           </div>
           <h2 className="text-2xl font-bold">{data.title}</h2>
           <p className="my-4 text-xs text-gray-500 leading-5">
-            In this course, you will learn basics of computer programming and
-            computer science. The concepts you learn apply to any and all
-            programming languages and will be a good base onto which you can
-            build your skills.This video is meant for those who are interested
-            in computer science and programming but have no idea where to start
-            and have little to no background information on coding.
+            {data.discription}
           </p>
           <div className="flex items-center space-x-5 border-b pb-5 border-gray-100 mt-2 font-light">
             {!data.live ? (
@@ -121,7 +162,7 @@ export default function ExploreInfo({ data }) {
               <h3>
                 Enroll to gain access to all{" "}
                 <span className="font-bold text-gray-700">
-                  11 recoreded Lesson
+                  recoreded Lesson
                 </span>{" "}
                 and{" "}
                 <span className="font-bold text-gray-700">
@@ -134,7 +175,14 @@ export default function ExploreInfo({ data }) {
           <div className="flex-1 flex flex-col space-y-5 py-3">
             <h3 className="font-bold">Lessons or Contents</h3>
             <div className="flex-1 ml-3 space-y-5">
-              <div className="flex items-center space-x-2">
+              {loading && <div className="w-full flex flex-col items-center justify-center">
+                <svg class="animate-spin  h-5 w-5  text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p className="text-center text-sm text-gray-400 font-medium mt-2">Please wait...</p>
+              </div>}
+              {topics.map((topic, index) => <div className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -147,69 +195,31 @@ export default function ExploreInfo({ data }) {
                     clipRule="evenodd"
                   />
                 </svg>
-                <h5>Introduction to Web concepts</h5>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-4 h-4 text-gray-300"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 2.25a.75.75 0 01.75.75v.54l1.838-.46a9.75 9.75 0 016.725.738l.108.054a8.25 8.25 0 005.58.652l3.109-.732a.75.75 0 01.917.81 47.784 47.784 0 00.005 10.337.75.75 0 01-.574.812l-3.114.733a9.75 9.75 0 01-6.594-.77l-.108-.054a8.25 8.25 0 00-5.69-.625l-2.202.55V21a.75.75 0 01-1.5 0V3A.75.75 0 013 2.25z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <h5>Web Apps and Web Browsers</h5>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-4 h-4 text-gray-300"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 2.25a.75.75 0 01.75.75v.54l1.838-.46a9.75 9.75 0 016.725.738l.108.054a8.25 8.25 0 005.58.652l3.109-.732a.75.75 0 01.917.81 47.784 47.784 0 00.005 10.337.75.75 0 01-.574.812l-3.114.733a9.75 9.75 0 01-6.594-.77l-.108-.054a8.25 8.25 0 00-5.69-.625l-2.202.55V21a.75.75 0 01-1.5 0V3A.75.75 0 013 2.25z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <h5>Text Editors and Environments</h5>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-4 h-4 text-gray-300"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 2.25a.75.75 0 01.75.75v.54l1.838-.46a9.75 9.75 0 016.725.738l.108.054a8.25 8.25 0 005.58.652l3.109-.732a.75.75 0 01.917.81 47.784 47.784 0 00.005 10.337.75.75 0 01-.574.812l-3.114.733a9.75 9.75 0 01-6.594-.77l-.108-.054a8.25 8.25 0 00-5.69-.625l-2.202.55V21a.75.75 0 01-1.5 0V3A.75.75 0 013 2.25z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <h5>Introduction to HTML5</h5>
-              </div>
+                <h5>{topic.title}</h5>
+              </div>)}
             </div>
           </div>
         </div>
       </div>
-      <label
+      <button
+      onClick={initializePaymentAction}
         className="bg-blue-600 text-white p-4 m-5 rounded-xl justify-center flex cursor-pointer"
-        htmlFor="my-modal-4" 
+        htmlFor="my-modal-4"
       >
-        Enroll now (GHS 599.00)
-      </label>
-      <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+        Enroll now GHS {data.price}
+      </button>
+      {/* <label
+        className="bg-blue-600 text-white p-4 m-5 rounded-xl justify-center flex cursor-pointer"
+        htmlFor="my-modal-4"
+      >
+        Enroll now (GHS {data.price})
+      </label> */}
+      {/* <input type="checkbox" id="my-modal-4" className="modal-toggle" />
       <label htmlFor="my-modal-4" className="modal cursor-pointer">
         <label className="modal-box bg-white relative" htmlFor="">
           <h3 className="text-lg font-bold">Course Enrolment</h3>
           <p className="py-2">
-            You are about to enroll in 
+            You are about to enroll in
           </p>
           <form method="POST">
             <div className="flex flex-col py-2 mt-2">
@@ -231,7 +241,7 @@ export default function ExploreInfo({ data }) {
             </div>
           </form>
         </label>
-      </label>
+      </label> */}
     </>
   );
 }

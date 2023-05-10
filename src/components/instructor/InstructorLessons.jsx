@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import MediaList from './MediaList'
 import UploadMedia from './UploadMedia'
+import { useServerHook } from '../../hooks/useServerHook'
 
-export default function instructorLessons() {
+export default function instructorLessons(props) {
     const [showAddMedia, setShowAddMedia] = useState(false)
+
+    const {getCourseMedia} = useServerHook();
+
+
     return (
         <div className='flex-1 flex flex-col space-y-2  h-full relative'>
             <div className="flex items-center space-x-5">

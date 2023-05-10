@@ -1,55 +1,38 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MyCourseCard from './MyCourseCard'
 import { useAuthContext } from '../../context/Auth'
 import CreateCourse from '../instructor/CreateCourse'
 import { AnimatePresence } from 'framer-motion'
-
-const APPLIED_COURSES = [
-    {
-        _id: "830984394",
-        name: 'Chemistry 102',
-        cover: 'https://images.unsplash.com/photo-1655720855348-a5eeeddd1bc4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2832&q=80',
-        price: 59.99,
-        icon: '',
-        lessons: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    },
-    {
-        _id: "3289736223",
-        name: 'Calculus II',
-        cover: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        price: 59.99,
-        icon: '',
-        lessons: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    },
-    {
-        _id: "390902387",
-        name: 'Physics II',
-        cover: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80',
-        price: 59.99,
-        icon: '',
-        lessons: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    },
-    {
-        _id: "43934782230",
-        name: 'Robotics',
-        cover: 'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-        price: 59.99,
-        icon: '',
-        lessons: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-    },
-]
+import { useServerHook } from '../../hooks/useServerHook'
+import _ from 'lodash'
 
 
 export default function CoursesList() {
 
-    const [courses, setCourses] = useState(APPLIED_COURSES)
+    const [courses, setCourses] = useState([])
     const [showCreateCourse, setShowCreateCourse] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const { getMyCourses } = useServerHook()
 
     const { user } = useAuthContext()
 
+    useEffect(() => {
+        setLoading(true);
+        getMyCourses().then(response => {
+            if (user.user.accountType === 'learner') {
+                setCourses(response.data.enrollments);
+            }
+            if (user.user.accountType === 'instructor') {
+                setCourses(response.data.courses);
+            }
+        }).finally(() => setLoading(false))
+
+
+    }, [])
+
 
     return (
-        <div className="flex-1 relative">
+        <div className="flex-1  relative flex-col ">
             <>
                 {user?.user?.accountType === 'instructor' ? <div className="flex flex-row space-x-3">
                     <button onClick={e => setShowCreateCourse(true)} className='flex items-center space-x-2 bg-white border border-gray-100 py-3 px-3 text-gray-500 font-medium rounded'>
@@ -69,12 +52,29 @@ export default function CoursesList() {
                 </div> : <></>
                 }
             </>
-   
-            <div className=" my-10">
+
+            <div className=" my-10 flex space-x-2 items-center">
                 <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
+                {
+                    loading &&
+                    <svg class="animate-spin  h-5 w-5  text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                }
             </div>
-            <div className="h-1/3 flex space-x-5">
-                {courses.map((item, index) => <MyCourseCard item={item} key={index} />)}
+
+            {!loading && !courses.length && <div className="bg-blue-100 text-blue-900 py-5 px-5">
+                <p>You currently have haven't enrolled yourself into any course yet.</p>
+            </div>}
+
+            <div className="h-[100%] flex-1 ">
+                {_.chunk(courses, 4).map((chunk, i) =>
+                    <div className="min-h-[300px] flex items-center space-x-5 py-5">
+                        {chunk.map((course, j) => <MyCourseCard item={course} key={`${i}-${j}-course`} />)}
+
+                    </div>
+                )}
             </div>
 
             {showCreateCourse &&

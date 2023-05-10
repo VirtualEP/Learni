@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
-export default function InstructorCourseInfo() {
+export default function InstructorCourseInfo(props) {
+    
     return (
         <div className="flex-1 flex flex-col space-y-3">
             <div className="flex items-center space-x-5 border-b">

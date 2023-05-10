@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../context/Auth'
 
+
 export default function MyCourseCard({ item }) {
 
     const { user } = useAuthContext()
+
 
     const cardToPointTo = useRef(linkBuilder())
 
@@ -28,6 +30,7 @@ export default function MyCourseCard({ item }) {
     useEffect(() => {
         linkBuilder()
     }, [user])
+    
 
     return (
         <Link to={cardToPointTo.current} className="h-full border w-1/4 relative bg-gray-50 flex cursor-pointer">
@@ -36,12 +39,12 @@ export default function MyCourseCard({ item }) {
                 <img src={item.cover} className='h-1/2 w-full' />
                 <div className='flex flex-col h-full bg-opacity-10  flex-1'>
                     <div className='border-b py-3 px-3 space-y-1 flex-1'>
-                        <h3 className='font-bold text-gray-900'>{item.name}</h3>
-                        <p className='text-sm font-light text-blue-400 '>{item.lessons.length} Lessons</p>
+                        <h3 className='font-bold text-gray-900'>{item.title}</h3>
+                        <p className='text-sm font-light text-blue-400 '>{item.students.legnth} Students</p>
                     </div>
                     <div className='flex items-center justify-between p-3 text-slate-500 text-sm'>
                         <p>Price</p>
-                        <p>${item.price}</p>
+                        <p>GHS {item.price}</p>
                     </div>
                 </div>
             </div>

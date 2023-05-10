@@ -3,7 +3,7 @@ import React from 'react'
 export default function ExploreCard({ data,onClick }) {
     return (
         <div onClick={onClick} className="flex items-center space-x-5 hover:bg-blue-50 bg-blur-md hover:rounded-xl hover:p-3 cursor-pointer transition-all hover:border border-gray-100">
-            <div className="h-28 w-28 bg-red-50 border border-gray-100 overflow-hidden rounded-lg object-cover object-center">
+            <div className="h-28 w-32 shrink-0 bg-red-50 border border-gray-100 overflow-hidden rounded-lg object-cover object-center">
                 <img className="w-full h-full" src={data.cover} />
             </div>
             <div className="space-y-3 flex flex-col">
@@ -17,10 +17,10 @@ export default function ExploreCard({ data,onClick }) {
                         </svg>
 
                     }
-                    <h3 className="text-xl text-slate-800 font-medium">{data.title}</h3>
+                    <h3 className="text-xl text-slate-800 font-medium truncate">{data.title}</h3>
                 </div>
                 <div className="flex items-center space-x-1">
-                    <p className="font-semibold text-gray-700 text-sm">{data.author}</p>
+                    <p className="font-semibold text-gray-700 text-sm">{data.author.firstName + ' ' + data.author.lastName}</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                         <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
                     </svg>
