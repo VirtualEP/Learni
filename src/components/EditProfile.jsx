@@ -17,7 +17,7 @@ function EditProfile() {
                   <div className="avatar online placeholder">
                     <div className="bg-neutral-focus text-neutral-content rounded-full w-20 cursor-pointer">
                       <span className="text-2xl text-white">
-                        {user.user.firstName
+                        {user?.user?.firstName
                           .match(/(\b\S)?/g)
                           .join("")
                           .match(/(^\S|\S$)?/g)
@@ -35,7 +35,7 @@ function EditProfile() {
                       name="name"
                       required
                       type="text"
-                      value={`${user.user.firstName}`}
+                      value={`${user?.user?.firstName}`}
                       onChange=""
                     />
                   </div>
@@ -46,7 +46,7 @@ function EditProfile() {
                       name="number"
                       required
                       type="text"
-                      value={`${user.user.lastName}`}
+                      value={`${user?.user?.lastName}`}
                       onChange=""
                     />
                   </div>
@@ -58,7 +58,7 @@ function EditProfile() {
                     name="email"
                     required
                     type="email"
-                    value={`${user.user.email}`}
+                    value={`${user?.user?.email}`}
                     onChange=""
                   />
                 </div>

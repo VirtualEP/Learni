@@ -47,7 +47,7 @@ export default function Topbar() {
           <div className="avatar online placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
               <span className="text-xl text-white">
-                {user.user.firstName
+                {user?.user?.firstName
                   .match(/(\b\S)?/g)
                   .join("")
                   .match(/(^\S|\S$)?/g)
@@ -58,9 +58,9 @@ export default function Topbar() {
           </div>
           {/* <img className='h-10 w-10 rounded-full' src={"https://images.unsplash.com/photo-1543278732-824a807df8bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"} /> */}
           <div>
-            <h3 className="font-bold">{`${user.user.firstName} ${user.user.lastName}`}</h3>
+            <h3 className="font-bold">{`${user?.user?.firstName} ${user?.user?.lastName}`}</h3>
             <p className="text-xs text-slate-400 capitalize">
-              {user.user.accountType} Account
+              {user?.user?.accountType} Account
             </p>
           </div>
           <div>

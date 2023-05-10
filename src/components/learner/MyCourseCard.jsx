@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../context/Auth'
 
 export default function MyCourseCard({ item }) {
+
+    const { user } = useAuthContext()
+
+    const cardToPointTo = useRef(linkBuilder())
+
+    function linkBuilder() {
+
+        let builderLink = "";
+
+        if (user?.user?.accountType === 'student') {
+
+            builderLink = item._id + '/summary'
+        }
+
+        if (user?.user?.accountType === 'instructor') {
+            builderLink = item._id + '/lessons'
+        }
+
+
+        return builderLink;
+    }
+
+    useEffect(() => {
+        linkBuilder()
+    }, [user])
+
     return (
-        <Link to={item._id+'/summary'} className="h-full border w-1/4 relative bg-gray-50 flex cursor-pointer">
+        <Link to={cardToPointTo.current} className="h-full border w-1/4 relative bg-gray-50 flex cursor-pointer">
 
             <div className="absolute flex flex-col flex-1 -top-1 bg-white  -left-1 w-full h-full relative border border-blue-100">
                 <img src={item.cover} className='h-1/2 w-full' />
@@ -18,7 +45,7 @@ export default function MyCourseCard({ item }) {
                     </div>
                 </div>
             </div>
-            
+
         </Link>
     )
 }

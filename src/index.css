@@ -22,9 +22,12 @@ html{
   width: 0px;
 }
 
-::-webkit-scrollbar {
-  width: 8px !important;
-  height: 2px !important;
+.hide-scrollbar ::-webkit-scrollbar{
+
+    width: 0px !important;
+    height: 0px !important;
+    background-color: transparent !important;
+
 }
 
 ::-webkit-scrollbar-track {

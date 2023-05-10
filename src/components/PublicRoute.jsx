@@ -9,7 +9,16 @@ export default function PublicRoute({ children }) {
     
 
     if (isAuthenticated) {
-        return <Navigate to="/dashboard" replace />;
+        if (user.user.accountType === 'learner'){
+
+            return <Navigate to="/dashboard" replace />;
+
+        }
+        if (user.user.accountType === 'instructor'){
+            
+            return <Navigate to="/creator" replace />;
+
+        }
     }
 
     return children;
