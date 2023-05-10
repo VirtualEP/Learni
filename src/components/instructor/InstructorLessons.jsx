@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import MediaList from './MediaList'
+import UploadMedia from './UploadMedia'
 
 export default function instructorLessons() {
     const [showAddMedia, setShowAddMedia] = useState(false)
@@ -39,17 +40,8 @@ export default function instructorLessons() {
             <div>
                 <MediaList />
             </div>
-            {showAddMedia && <div className='bg-white absolute -top-20  right-0 w-full h-[113%] flex '>
-                <div className="flex-1 border-r flex flex-col">
-                    <div className="bg-gray-200 flex py-1 px-5">
-                        <p>Select a heading or topic</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                        </svg>
-
-                    </div>
-                </div>
-                <div className="flex-1"></div>
+            {showAddMedia && <div className='bg-white absolute -top-20  right-0 w-full h-[113%] flex pt-5'>
+               <UploadMedia/>
             </div>}
         </div>
     )

@@ -3,7 +3,7 @@ import UploadMedia from './UploadMedia'
 
 export default function InstructorEnrolment() {
   return (<>
-<UploadMedia/>
+<h1>Enrolment</h1>
   </>
   )
 }
