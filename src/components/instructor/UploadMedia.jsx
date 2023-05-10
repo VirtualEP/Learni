@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import EasyField from '../learner/questionsType/EasyField'
 
-export default function UploadMedia() {
+export default function UploadMedia({onClose}) {
     const fileInputRef = useRef();
     const [files, setFiles] = useState([])
     const [notes, setNotes] = useState([])
@@ -11,9 +11,8 @@ export default function UploadMedia() {
 
 
     return (
-        <div className="flex-1 h-full flex flex-row bg-black bg-opacity-20 overflow-hidden">
-            <button className="flex-1"></button>
-            <div className="flex-1 bg-white border-r border-gray-50 flex flex-col h-full pl-3 space-y-7 overflow-y-auto">
+        <div className="flex-1 h-full flex flex-row bg-black bg-opacity-20 overflow-hidden ">
+            <div className="flex-1 bg-white border-r border-gray-50 flex flex-col h-full pr-3 space-y-7 overflow-y-auto py-3">
                 <div className="flex items-center space-x-3">
 
                     {
@@ -96,10 +95,11 @@ export default function UploadMedia() {
 
                 <div className=' mb-10 flex items-center justify-center space-x-3'>
                     <button className='bg-blue-500 text-white w-1/2 py-3 rounded-full hover:w-full transition-all delay-100 hover:transition-all'>Submit</button>
-                    <button onClick={null} className='bg-gray-300 text-white w-1/2 py-3 rounded-full hover:w-full transition-all delay-100 hover:transition-all'>cancel</button>
+                    <button onClick={onClose} className='bg-gray-300 text-white w-1/2 py-3 rounded-full hover:w-full transition-all delay-100 hover:transition-all'>cancel</button>
                 </div>
 
             </div>
+            <button onClick={onClose} className="flex-1"></button>
         </div>
     )
 }

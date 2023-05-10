@@ -40,8 +40,8 @@ export default function instructorLessons() {
             <div>
                 <MediaList />
             </div>
-            {showAddMedia && <div className='bg-white absolute -top-20  right-0 w-full h-[113%] flex pt-5'>
-               <UploadMedia/>
+            {showAddMedia && <div className='bg-white absolute -top-20 right-0 w-full h-[113%] flex'>
+               <UploadMedia onClose={e=>setShowAddMedia(false)} />
             </div>}
         </div>
     )
