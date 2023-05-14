@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import EasyField from '../learner/questionsType/EasyField'
 
-export default function UploadMedia({onClose}) {
+export default function UploadMedia({ onClose }) {
     const fileInputRef = useRef();
     const [files, setFiles] = useState([])
     const [notes, setNotes] = useState([])
@@ -26,15 +26,16 @@ export default function UploadMedia({onClose}) {
                             :
                             <input type="text" value={topic.topic} onChange={e => setTopic(prev => ({ ...prev, topic: e.target.value }))} placeholder="Type topic..." className="border bg-white py-2 rounded-full px-5 flex-1" />}
 
-                    <button onClick={e => {
-                        if (!topic.show) {
-                            setTopic(prev => ({ ...prev, show: true }))
-                            return;
-                        }
-                        setTopic(prev => ({ ...prev, show: false }))
+                    <button
+                        onClick={e => {
+                            if (!topic.show) {
+                                setTopic(prev => ({ ...prev, show: true }))
+                                return;
+                            }
+                            setTopic(prev => ({ ...prev, show: false }))
 
-                    }
-                    } className="bg-blue-500 text-white text-sm px-5 py-2 rounded-full">Create new</button>
+                        }}
+                        className="bg-blue-500 text-white text-sm px-5 py-2 rounded-full">Create new</button>
 
                 </div>
 
@@ -45,7 +46,6 @@ export default function UploadMedia({onClose}) {
                             if (e.target.files) {
                                 const file = e.target.files[0];
                                 const url = URL.createObjectURL(file);
-                                console.log(url);
                                 setPreviewlink(url);
                             }
                         }} ref={fileInputRef} type="file" accept='video/mp4' className="hidden" />

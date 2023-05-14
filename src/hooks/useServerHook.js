@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useAuthContext } from "../context/Auth"
 
-const API_ROUTES = "http://localhost:8080";
+export const API_ROUTES = "http://localhost:8080";
 
 function useServerHook() {
 
@@ -34,6 +34,17 @@ function useServerHook() {
 
     const getMyCourses = () => {
         return axios.get(`${API_ROUTES}/api/course/mycourses`,
+            {
+                headers: {
+                    'authorization': `token ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+    }
+
+    const getSingleCourses = (courseId) => {
+        return axios.get(`${API_ROUTES}/api/course/single/${courseId}`,
             {
                 headers: {
                     'authorization': `token ${user.token}`,
@@ -80,7 +91,20 @@ function useServerHook() {
     }
 
 
-    return { getExplores, getTopics, getMyCourses ,searchByTag,searchByName,getCourseMedia }
+    const purchaseCourse = (data)=>{
+
+        return axios.post(`${API_ROUTES}/api/course/paid`,data,
+            {
+                headers: {
+                    'authorization': `token ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+    }
+
+
+    return { getExplores, getTopics, getMyCourses ,searchByTag,searchByName,getSingleCourses,getCourseMedia,purchaseCourse }
 }
 
 

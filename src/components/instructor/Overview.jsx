@@ -60,7 +60,7 @@ export default function Overview() {
             <div className=" overflow-y-auto">
               {/* recent card */}
               {
-                [1, 2, 3, 4, 5, 6, 0].map((data, index) => <div className="my-2">
+                [1, 2, 3, 4, 5, 6, 0].map((data, index) => <div className="my-2" key={`recent-enrolment-${index}-`}>
                   <div className="flex flex-row space-x-3">
                     <img className="h-10 w-10 rounded-full shrink-0" src={'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80'} />
                     <div className="items-center h-full flex-1">

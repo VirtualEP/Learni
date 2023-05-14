@@ -1,25 +1,63 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { API_ROUTES } from '../../hooks/useServerHook';
+import VideoJS from '../Videojs';
 
 export default function LessonPlayer({ data, onClose }) {
 
-    console.log(data);
+    const playerRef = React.useRef(null);
+
+    const videoJsOptions = {
+      autoplay: true,
+      controls: true,
+      responsive: true,
+    //   fluid: true,
+      sources: [{
+        src: `${API_ROUTES}/video/${data.src}`,
+        type: 'video/mp4',
+      }]
+    };
+  
+    const handlePlayerReady = (player) => {
+      playerRef.current = player;
+  
+      // You can handle player events here, for example:
+      player.on('waiting', () => {
+        videojs.log('player is waiting');
+      });
+  
+      player.on('dispose', () => {
+        videojs.log('player will dispose');
+      });
+    };
+
+
     return (
         <motion.div animate={{ scale: 1, opacity: 1 }} initial={{ scale: 0, opacity: 0 }} exit={{ translateY: 10, opacity: 0 }} className={`flex absolute top-0 left-0 w-screen h-screen bg-white flex-col flex-1`}>
             <div className="flex-1 flex">
                 <div className="flex-1 flex items-center justify-center">
-                    <iframe className='w-full' height="500" src="https://www.youtube-nocookie.com/embed/6DaJVZBXETE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    {/* <iframe className='w-full' height="500" src="https://www.youtube-nocookie.com/embed/6DaJVZBXETE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> */}
+                    {data.type == 'video' && <video id="videoPlayer" className='w-full h-[500px]' controls controlsList="nodownload" onContextMenu={()=>null} autoPlay>
+                        <source src={`${API_ROUTES}/video/${data.src}`} type="video/mp4" />
+                    </video>}
+                    {/* {data.type == 'video' && <VideoJS  options={videoJsOptions} onReady={handlePlayerReady}/>} */}
                 </div>
-                <div className="w-1/3 border-l p-5 flex-col space-y-3">
+                <div className="w-1/3 border-l p-5 flex-col space-y-3 relative">
                     <h1 className='font-medium text-gray-900 text-xl'>Lesson Note</h1>
                     <div className='flex flex-col space-y-5'>
-                        <h2 className="text-4xl font-bold">{data.title}</h2>
-                        <p className='text-gray-600 font-normal leading-relaxed'>
-                            Binary search is a more specialized algorithm than sequential search as it takes advantage of data that has been sorted. The underlying idea of binary search is to divide the sorted data into two halves and to examine the data at the point of the split. Since the data is sorted, we can easily ignore one half or the other depending on where the data we're looking for lies in comparison to the data at the split. This makes for a much more efficient search than linear search.
-                        </p>
+                        <h2 className="text-4xl font-bold">{data.name}</h2>
+                        {data.notes.map((data, i) => <p key={`note-${i}`} className='text-gray-600 font-normal leading-relaxed'>
+                            {data}
+                        </p>)}
 
-                        <p className='text-gray-600 font-normal leading-relaxed'>Binary search is used on sorted arrays, but we see it more often when used with binary search trees (see the trees SparkNote for more information). Whereas linear search allows us to look for data in O(n) time, where n is the number of elements being searched, binary search allows us to do the same search in O(logn) time, a dramatic speed enhancement.</p>
+                        <p className='bg-blue-200 p-3 text-blue-800'>There are no notes attached to this meida</p>
                     </div>
+
+                    {/* <button className='border rounded-full p-3 bg-white shadow-sm  absolute -left-8 top-0 '>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5" />
+                        </svg>
+                    </button> */}
                 </div>
             </div>
             <div className="w-full flex items-center justify-center space-x-5 bg-white border-t">

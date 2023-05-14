@@ -68,7 +68,7 @@ export default function App() {
             <Route path="settings" element={<Settings />} />
           </Route>
           {/* ... */}
-          <Route path="/creator" element={<PrivateRoute children={<DashboardScreen />}/>} >
+          <Route path="/creator" element={<PrivateRoute children={<DashboardScreen />} />} >
             <Route path="" element={<Overview />} />
             <Route path="overview" element={<Overview />} />
             <Route path="courses" element={<Outlet />} >

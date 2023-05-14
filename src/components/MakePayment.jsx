@@ -7,8 +7,8 @@ function MakePayment() {
             <h1 className="text-2xl pt-5 font-bold ">Billing Information</h1>
             <div className="pt-8 grid md:grid-cols-2 gap-8">
               <div className="col-span-3 w-full h-auto shadow-lg shadow-gray-300 rounded-xl lg:p-4">
-              <div class="w-full pt-1 pb-5">
-            <div class="bg-blue-600 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
+              <div className="w-full pt-1 pb-5">
+            <div className="bg-blue-600 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
                 <BsCashStack size={35} />
             </div>
             <div className="px-4 pt-4">

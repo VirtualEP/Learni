@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MediaList from './MediaList'
 import UploadMedia from './UploadMedia'
 import { useServerHook } from '../../hooks/useServerHook'
+import { useParams } from 'react-router-dom'
 
 export default function instructorLessons(props) {
     const [showAddMedia, setShowAddMedia] = useState(false)
+    const [topics, setTopics] = useState([])
+    const { getCourseMedia } = useServerHook();
+    let { id } = useParams();
 
-    const {getCourseMedia} = useServerHook();
+    useEffect(() => {
+        getCourseMedia(id).then((response) => {
+            setTopics(response.data.topics);
+        })
+    }, [id])
 
 
     return (
-        <div className='flex-1 flex flex-col space-y-2  h-full relative'>
+        <div className='flex-1 flex flex-col space-y-2  h-[100%] relative overflow-hidden'>
             <div className="flex items-center space-x-5">
                 <button onClick={e => setShowAddMedia(true)} className='flex items-center space-x-2 bg-blue-100 text-blue-700 border border-gray-100 py-3 px-5  font-medium rounded'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -39,14 +47,36 @@ export default function instructorLessons(props) {
                     <p>Broadcast live</p>
                 </button>
             </div>
-            <div className=''>
-                <h3 className='text-xl pt-10'>Course media</h3>
+            <div className='pt-10 pb-5 shrink-0'>
+                <h1 className="text-3xl font-bold text-gray-900">Course Topic & Media</h1>
             </div>
-            <div>
-                <MediaList />
+            <div className='flex-1 h-full flex overflow-hidden ml-3'>
+                <div className="flex flex-col flex-1 overflow-y-auto space-y-8">
+                    {topics.map((topic, i) => (
+                        <div key={`topic-${i}-r`} className={'flex flex-col space-y-4'}>
+                            <div className="flex flex-row items-center justify-between">
+                                <h3 className="text-gray-500">{topic.title}</h3>
+                                <div className="flex flex-row items-center">
+                                    <button className='bg-red-400 rounded-full'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                    <button>
+
+                                    </button>
+                                </div>
+                            </div>
+                            {!topic.media.length && <div className="p-5 bg-gray-50">
+                                <p className='text-gray-500 text-sm font-medium'>You haven't added any media for this topic yet </p>
+                            </div>}
+                            {topic.media.map((media, j) => <MediaList media={media} index={j} key={`topic-${i}-media-${j}`} />)}
+                        </div>
+                    ))}
+                </div>
             </div>
             {showAddMedia && <div className='bg-white absolute -top-20 right-0 w-full h-[113%] flex'>
-               <UploadMedia onClose={e=>setShowAddMedia(false)} />
+                <UploadMedia onClose={e => setShowAddMedia(false)} />
             </div>}
         </div>
     )

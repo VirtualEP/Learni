@@ -1,20 +1,20 @@
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../context/Auth'
 
 
 export default function MyCourseCard({ item }) {
 
     const { user } = useAuthContext()
-
-
+    const navigate = useNavigate()
+    
     const cardToPointTo = useRef(linkBuilder())
 
     function linkBuilder() {
 
         let builderLink = "";
 
-        if (user?.user?.accountType === 'student') {
+        if (user?.user?.accountType === 'learner') {
 
             builderLink = item._id + '/summary'
         }
@@ -33,7 +33,7 @@ export default function MyCourseCard({ item }) {
     
 
     return (
-        <Link to={cardToPointTo.current} className="h-full border w-1/4 relative bg-gray-50 flex cursor-pointer">
+        <button onClick={()=>navigate(cardToPointTo.current,{state:{...item}})} className="h-full border w-1/4 relative bg-gray-50 flex cursor-pointer">
 
             <div className="absolute flex flex-col flex-1 -top-1 bg-white  -left-1 w-full h-full relative border border-blue-100">
                 <img src={item.cover} className='h-1/2 w-full' />
@@ -49,6 +49,6 @@ export default function MyCourseCard({ item }) {
                 </div>
             </div>
 
-        </Link>
+        </button>
     )
 }
