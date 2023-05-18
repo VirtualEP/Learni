@@ -7,9 +7,9 @@ import Topbar from '../../components/learner/Topbar';
 export default function DashboardScreen() {
   const { user } = useAuthContext();
   return (
-    <div className="w-screen h-screen flex flex-col  md:flex-row   bg-white">
+    <div className="w-[100vw] h-[90vh] md:h-screen flex flex-col  md:flex-row   bg-white">
       <LearnerSideBar />
-      <div className="flex-1 flex flex-col overflow-x-hidden p-5">
+      <div className="flex-1 flex flex-col overflow-x-hidden px-5">
         <Topbar/>
         <Outlet />
       </div>

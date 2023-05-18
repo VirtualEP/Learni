@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CourseMediacard({ data,onPress }) {
   return (
-    <div onClick={onPress} className="flex transition-all max-w-[400px] hover:transition-all hover:scale-105 hover:text-blue-700 delay-100 space-x-3 border border-gray-100 rounded bg-gray-50 p-2 cursor-pointer m-2">
+    <div onClick={onPress} className="flex transition-all max-w-[full] hover:transition-all hover:scale-105 hover:text-blue-700 delay-100 space-x-3 border border-gray-100 rounded bg-gray-50 p-2 cursor-pointer m-2">
       <div className="h-20 w-20 shrink-0 bg-white flex items-center justify-center">
         {
           data.type.toLowerCase() === 'video' && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-gray-300">
@@ -17,7 +17,7 @@ export default function CourseMediacard({ data,onPress }) {
         }
       </div>
       <div className="pr-3">
-        <h3 className="text-lg font-medium text-gray-700">{data?.name}</h3>
+        <h3 className="md:text-lg text-sm font-medium text-gray-700 truncate">{data?.name}</h3>
         {
           data.type.toLowerCase() === 'video' &&  <p className="text-sm font-light">00:30:00</p>
         }

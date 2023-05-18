@@ -136,9 +136,9 @@ export default function CourseLessons() {
 
 
     return (<>
-        <div className='flex-1 flex flex-col space-y-5 py-5'>
+        <div className='flex-1 flex flex-col space-y-5 py-5 '>
             <h3 className='font-bold'>Lessons or Contents</h3>
-            <div className='flex-1 ml-3 space-y-5'>
+            <div className='flex-1 md:ml-3 w-full space-y-5 w-full overflow-hidden'>
                 {topics.map((data, index) => <div key={`${index}`} className='flex flex-col space-y-2'>
                     <div className='flex items-center space-x-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-gray-300">
@@ -146,7 +146,7 @@ export default function CourseLessons() {
                         </svg>
                         <h5>{data?.title}</h5>
                     </div>
-                    <div className="flex ml-2 py-2 flex-row flex-wrap  items-center">
+                    <div className="flex md:ml-2 py-2 flex-row flex-wrap  items-center">
                         {data.media.map((media, index) => <CourseMediacard onPress={() => onPreviewMedia(media)} data={media} key={`media-${data.title}-${index}`} />)}
                     </div>
                 </div>)}

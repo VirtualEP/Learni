@@ -1,14 +1,15 @@
 import React from 'react'
+import { API_ROUTES } from '../../hooks/useServerHook'
 
 export default function ExploreCard({ data,onClick }) {
 
     return (
         <div onClick={onClick} className="flex items-center space-x-5 hover:bg-blue-50 bg-blur-md hover:rounded-xl hover:p-3 cursor-pointer transition-all hover:border border-gray-100">
             <div className="h-28 w-32 shrink-0 bg-red-50 border border-gray-100 overflow-hidden rounded-lg object-cover object-center">
-                <img className="w-full h-full" src={data.cover} />
+                <img className="w-full h-full" src={API_ROUTES+'/'+data.cover} onError={e=>e.target.src='https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png'} />
             </div>
             <div className="space-y-3 flex flex-col">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 w-full">
                     {data.live ? <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                     </svg> :
@@ -18,7 +19,7 @@ export default function ExploreCard({ data,onClick }) {
                         </svg>
 
                     }
-                    <h3 className="text-xl text-slate-800 font-medium truncate">{data.title}</h3>
+                    <h3 className="md:text-lg text-sm w-full text-slate-800 font-bold md:font-medium truncate">{data.title}</h3>
                 </div>
                 <div className="flex items-center space-x-1">
                     <p className="font-semibold text-gray-500 text-sm">{data.author.firstName + ' ' + data.author.lastName}</p>

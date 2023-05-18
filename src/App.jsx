@@ -71,7 +71,7 @@ export default function App() {
           <Route path="/creator" element={<PrivateRoute children={<DashboardScreen />} />} >
             <Route path="" element={<Overview />} />
             <Route path="overview" element={<Overview />} />
-            <Route path="courses" element={<Outlet />} >
+            <Route path="courses" element={<div className="flex flex-1 overflow-hidden "><Outlet /></div>} >
               <Route path="" element={<CoursesList />} />
               <Route path=":id" element={<InstructorCourseInfo />} >
                 <Route path="lessons" element={<InstructorLessons />} />

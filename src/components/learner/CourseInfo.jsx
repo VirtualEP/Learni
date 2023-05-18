@@ -1,6 +1,6 @@
 import React, { useRef ,useEffect,useState} from 'react'
 import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
-import { useServerHook } from '../../hooks/useServerHook'
+import { API_ROUTES, useServerHook } from '../../hooks/useServerHook'
 import LoadingBar from 'react-top-loading-bar'
 export default function CourseInfo() {
     const containerRef = useRef()
@@ -21,20 +21,23 @@ export default function CourseInfo() {
 
     return (
         <>
+            
+
+            <div ref={containerRef} className="flex-1 flex flex-col overflow-y-auto">
             <div className="flex items-center space-x-3 text-gray-400 my-3  text-sm ">
-                <Link to="/dashboard/overview"  >Dashboard</Link>
+                <Link to="/dashboard/courses"  >Dashboard</Link>
                 <p>/</p>
                 <Link to="/dashboard/courses">Courses</Link>
                 <p>/</p>
                 <Link to="/dashboard/course/47833843">{courseData?.title}</Link>
             </div>
 
-            <div ref={containerRef} className="flex-1 flex flex-col overflow-y-auto">
-
-
                 <div className='flex flex-col space-y-5 '>
                     <h1 className="text-2xl">{courseData?.title}</h1>
-                    <div className="h-[200px] bg-gray-300 relative bg-center rounded" style={{ backgroundImage: `url('${courseData?.cover}')` }}>
+                    <div className="h-[250px] bg-gray-300 relative bg-center rounded" style={{ backgroundImage: `url('${ API_ROUTES+'/'+courseData?.cover}')` }}>
+                        <div className="absolute flex top-0 left-0 w-full h-full flex-1 bg-gray-200">
+                        <img src={ API_ROUTES+'/'+courseData?.cover} className='w-full h-full' />
+                        </div>
                         <div className="flex items-center space-x-2 absolute bottom-0 p-3 bg-black w-full bg-opacity-10 bg-backdrop-lg">
                             <div className="bg-white px-5 py-2 rounded-full flex items-center space-x-3 text-sm bg-opacity-95">
                                 <h3>{courseData?.author?.firstName+' '+courseData?.author?.lastName}</h3>

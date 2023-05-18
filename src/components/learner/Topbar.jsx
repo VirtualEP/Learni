@@ -15,8 +15,8 @@ export default function Topbar() {
   };
 
   return (
-    <div className="flex items-center mb-5 relative">
-      <div className=" flex bg-gray-100 items-center rounded-lg w-2/4 overflow-hidden space-x-2 px-3 py-2">
+    <div className="flex md:items-center mb-5 relative flex-col  md:flex-row space-y-3 md:space-y-0">
+      <div className="flex bg-gray-100 items-center rounded-lg md:w-2/4 overflow-hidden space-x-2 px-3 py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -39,7 +39,7 @@ export default function Topbar() {
         />
       </div>
       <div className="flex-1"></div>
-      <div className="mr-5 shrink-0">
+      <div className="mr-5 shrink-0 hidden md:flex">
         <div
           className="flex items-center space-x-5 cursor-pointer"
           onClick={() => setProfileOptions(true)}

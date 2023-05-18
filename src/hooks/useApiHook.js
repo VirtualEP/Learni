@@ -1,6 +1,7 @@
 import axios from "axios";
+import { API_ROUTES } from "./useServerHook";
 
-const BASE_API_URL = "http://localhost:8080/api";
+const BASE_API_URL = API_ROUTES+"/api";
 
 export default function useApiHook() {
   const signin = async ({ email, password }) => {

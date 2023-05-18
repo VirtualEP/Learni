@@ -40,7 +40,7 @@ export default function CourseSummary() {
     }, [])
 
     return (
-        <div className="my-10 flex-1 flex flex-col w-3/4">
+        <div className="my-10 flex-1 flex flex-col w-full md:w-3/4">
             <LoadingBar color='blue' ref={ref} />
             {!loading && courseData !== null && <>
                 <div className="flex items-center space-x-2 mb-2">
@@ -67,7 +67,7 @@ export default function CourseSummary() {
                 </div>
                 <h2 className="text-2xl font-bold">{courseData?.title}</h2>
                 <p className="my-4 text-xs text-gray-500 leading-5">{courseData?.discription}</p>
-                <div className="flex items-center space-x-5 pb-5 border-gray-100 mt-2 font-light w-2/3">
+                <div className="flex md:items-center md:flex-row flex-col md:space-x-5 pb-5 border-gray-100 mt-2 font-light md:w-2/3">
                     {!data.live ? <button className="bg-blue-400 shrink-0 text-white px-5 py-2 rounded-3xl text-sm flex items-center space-x-3">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
                             <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clipRule="evenodd" />
@@ -80,7 +80,7 @@ export default function CourseSummary() {
                             </svg>
                             <p>Live Lesson</p>
                         </button>}
-                    <div className='text-xs '>
+                    <div className='text-xs mt-5 md:mt-0'>
                         <h3>Enroll to gain access to all <span className='font-bold text-gray-700'>recoreded Lesson</span> and <span className='font-bold text-gray-700'>Instructor's Contact</span> for further questions.</h3>
                     </div>
                 </div>
