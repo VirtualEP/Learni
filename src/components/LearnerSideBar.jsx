@@ -96,7 +96,7 @@ export default function LearnerSideBar() {
           </svg>}
             to={"explore"}
             lock={'learner'}
-            title={"explore"} />
+            title={"Explore"} />
           <SideNavLink Icon={() => <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -117,7 +117,7 @@ export default function LearnerSideBar() {
             />
           </svg>}
             to={"settings"}
-            title={"settings"} />
+            title={"Settings"} />
         </div>
         <AnimatePresence>
           {smMenuShow &&< motion.div initial={{translateY: -10,height:'0px',opacity:0}} exit={{translateY: -10,height:'0px',opacity:0}} animate={{height:'100%',translateY: 0,opacity:1}}  className="flex flex-col space-y-5 md:hidden overflow-hidden pb-5">
@@ -160,7 +160,7 @@ export default function LearnerSideBar() {
           </svg>}
             to={"explore"}
             lock={'learner'}
-            title={"explore"} />
+            title={"Explore"} />
           <SideNavLink Icon={() => <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -181,7 +181,7 @@ export default function LearnerSideBar() {
             />
           </svg>}
             to={"settings"}
-            title={"settings"} />
+            title={"Settings"} />
       
           </motion.div>}
         </AnimatePresence>
