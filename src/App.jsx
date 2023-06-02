@@ -20,7 +20,6 @@ import CourseLessons from "./components/learner/CourseLessons"
 import CourseExercise from "./components/learner/CourseExercise"
 import CourseQna from "./components/learner/CourseQna"
 import Channel from "./components/learner/Channel"
-import Landing from "./pages/landing"
 import Landings from "./pages/landings"
 import InstructorCourseInfo from "./components/instructor/CourseInfo"
 import InstructorLessons from "./components/instructor/instructorLessons"
@@ -47,7 +46,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Landings />} />
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >

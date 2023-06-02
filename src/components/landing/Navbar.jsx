@@ -4,7 +4,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState("#ecf0f3");
+  const [navBg, setNavBg] = useState("#ffffff");
   const [Color, setColor] = useState("#1f2937");
 
   const handleOpen = () => {
@@ -31,54 +31,54 @@ function Navbar() {
       }
       style={{ backgroundColor: `${navBg}` }}
     >
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-        <div className="flex items-center">
-        <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-300 mr-2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-              />
-            </svg>
+      <div className="flex items-center justify-between w-full h-full px-2 2xl:px-16 ">
+        <div className="flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 text-gray-300 mr-2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+            />
+          </svg>
           <h1 className="text-2xl font-bold cursor-pointer">
-            i<span className="text-blue-600 ">Learn</span>{" "}
+            Dev<span className="text-blue-600 ">Tray</span>{" "}
           </h1>
           {/* MENU ITEMS */}
-          <div className="hidden md:flex items-center justify-center">
-            <ul style={{ color: `${Color}` }} className="hidden md:flex">
-              <a href="/#home">
-                <li className="ml-10 text-md  border-b-4 hover:border-blue-600">
-                  Home
-                </li>
-              </a>
-              <a href="/#courses">
-                <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
-                  Courses
-                </li>
-              </a>
-              <a href="/#mentors">
-                <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
-                  Mentors
-                </li>
-              </a>
-            </ul>
-          </div>
         </div>
-        <div className="hidden md:flex pr-4">
+        <div className="hidden md:flex justify-center items-center">
+          <ul style={{ color: `${Color}` }} className="hidden md:flex">
+            <a href="/#home">
+              <li className="text-md  border-b-4 hover:border-blue-600">
+                Home
+              </li>
+            </a>
+            <a href="/#courses">
+              <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
+                Courses
+              </li>
+            </a>
+            <a href="/#mentors">
+              <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
+                Mentors
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div className="hidden md:flex mr-4">
           <a href="/signin">
-            <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className=" px-2 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign In
             </button>
           </a>
           <a href="/signup">
-            <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className=" px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign Up
             </button>
           </a>
