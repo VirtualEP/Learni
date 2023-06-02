@@ -193,24 +193,14 @@ export default function LearnerSideBar() {
           <h1 className="font-semibold text-gray-700">Go premium</h1>
           <p className="text-xs text-gray-500">
             Explore 1000+ courses with some of the amzing teacher all over
-            theworld without Adds.
+            the world without Adds.
           </p>
           <div>
-            <button className="text-xs text-blue-600 bg-white p-3 rounded-full">
+            <button className="text-xs text-blue-600 bg-white p-3 rounded-md">
               Upgrade Now
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-center">
-          <img className="h-[200px] w-2/3" src={illustration} />
-        </div>
-        <p className="text-xs m-1 text-gray-400 text-center">
-          Illustration by{" "}
-          <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">
-            Icons 8
-          </a>{" "}
-          from <a href="https://icons8.com/illustrations">Ouch!</a>
-        </p>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
-export default function Topbar() {
+export default function Topbar({showSearch}) {
   const { user } = useAuthContext();
 
   const [profileOptions, setProfileOptions] = useState(false);
@@ -32,11 +32,12 @@ export default function Topbar() {
           />
         </svg>
 
-        <input
-          placeholder="courses , lessons and videos"
-          className="bg-gray-100 w-full"
-          type="text"
-        />
+        <button
+        onClick={() => showSearch()}
+          className="bg-gray-100 w-full text-left items-center h-full text-gray-400"
+        >
+          <p>Courses, lessons and videos</p>
+          </button>
       </div>
       <div className="flex-1"></div>
       <div className="mr-5 shrink-0 hidden md:flex">

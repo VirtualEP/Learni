@@ -24,6 +24,7 @@ import Landings from "./pages/landings"
 import InstructorCourseInfo from "./components/instructor/CourseInfo"
 import InstructorLessons from "./components/instructor/instructorLessons"
 import InstructorEnrolment from "./components/instructor/InstructorEnrolment"
+import Courselo from "./pages/courselo"
 
 
 export const VITE_CLIENT_ID = "1065813839939-vp30ql16pu5nbatco90snth2b6sr8b41.apps.googleusercontent.com";

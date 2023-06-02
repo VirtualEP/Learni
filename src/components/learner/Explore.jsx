@@ -3,45 +3,78 @@ import ExploreCard from './ExploreCard'
 import ExploreInfo from './ExploreInfo'
 import { useServerHook } from '../../hooks/useServerHook'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
-const popularTags = [
-    'python',
-    'php',
-    'html',
-    'css',
-    'javascript'
-]
+
 
 export default function Explore() {
 
     const [selectedCourse, setSelectedCourse] = useState()
 
     const [courses, setCourses] = useState([])
+    const [popularTags, setPopularTags] = useState([])
     const [loading, setLoading] = useState(false)
 
-    const { getExplores } = useServerHook()
+    const [selectedTag, setSelectedTag] = useState('')
+
+    const location = useLocation()
+
+
+
+    const { getExplores, searchByTag } = useServerHook()
+
+    useEffect(() => {
+        if (location.state) {
+            setSelectedCourse(location.state.selected)
+            setCourses(location.state.exploreCourses.courses)
+            setPopularTags(location.state.exploreCourses.tags)
+            return
+        } else {
+            setLoading(true)
+            getExplores().then(({ data }) => {
+                setPopularTags(data.tags)
+                setCourses(data.courses)
+            }).finally(() => setLoading(false))
+        }
+
+    }, [location])
+
 
     useEffect(() => {
         setLoading(true)
-        getExplores().then(({ data }) => {
+        searchByTag(selectedTag).then(({ data }) => {
             setCourses(data.courses)
         }).finally(() => setLoading(false))
+    }, [selectedTag])
 
-    }, [])
 
 
     return (
         <div className="flex-1 flex border-t -mx-5 overflow-hidden flex-col md:flex-row">
             <div className="md:w-1/2 border-r bg-white-50 flex overflow-hidden flex-col space-y-3 border-gray-100 px-5">
-            <div className="md:flex flex-row items-center space-x-2 hidden">
-                        <h1 className="text-2xl pt-5 font-bold">Explore Courses</h1>
+                <div className="md:flex flex-row items-center space-x-2 hidden">
+                    <h1 className="text-2xl pt-5 font-bold">Explore Courses</h1>
 
-                    </div>
-                    <div className="md:flex hidden items-center flex-row touch-auto py-3 w-full space-x-4 overflow-x-auto hide-scrollbar ">
-                        {
-                            popularTags.map((data, index) => <button key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data}</button>)
-                        }
-                    </div>
+                </div>
+                <div className="md:flex hidden items-center flex-row py-3 w-full space-x-4 overflow-x-auto">
+                    {
+                        selectedTag ?
+                            <div className="flex items-center">
+                                <button onClick={() => setSelectedTag('')} key={`explore-course`} className="bg-blue-400 text-white px-5 py-1 rounded-md w-full flex items-center space-x-2">
+                                    <p>{selectedTag}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+
+                                </button>
+                            </div>
+                            : <>
+                                {
+                                    popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data.tag}</button>)
+                                }
+                            </>
+                    }
+                </div>
                 <div className="flex-1 overflow-hidden space-y-8 overflow-y-auto h-full">
                     <div className="flex flex-row items-center space-x-2 md:hidden">
                         <h1 className="text-2xl pt-5 font-bold">Explore Courses</h1>
@@ -49,7 +82,21 @@ export default function Explore() {
                     </div>
                     <div className="flex md:hidden items-center flex-row touch-auto py-3 w-full space-x-4 overflow-x-auto hide-scrollbar ">
                         {
-                            popularTags.map((data, index) => <button key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data}</button>)
+                            selectedTag ?
+                                <div className="flex items-center">
+                                    <button onClick={() => setSelectedTag('')} key={`explore-course`} className="bg-blue-400 text-white px-5 py-1 rounded-md w-full flex items-center space-x-2">
+                                        <p>{selectedTag}</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+
+                                    </button>
+                                </div>
+                                : <>
+                                    {
+                                        popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data.tag}</button>)
+                                    }
+                                </>
                         }
                     </div>
                     {loading && <div className="w-full flex flex-col items-center justify-center">
@@ -79,7 +126,7 @@ export default function Explore() {
                                     <p className="text-sm font-thin text-gray-400">Select a course to show more information.</p>
                                 </div>}
                             <button onClick={() => setSelectedCourse(null)} className="bg-gray-400 md:hidden flex absolute right-6 -top-12 items-center justify-center rounded-full text-white h-10 w-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
 

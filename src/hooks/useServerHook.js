@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useAuthContext } from "../context/Auth"
 
-export const API_ROUTES = "http://172.20.10.3:8080";
+export const API_ROUTES = "http://localhost:8080";
 
 function useServerHook() {
 
@@ -100,6 +100,27 @@ function useServerHook() {
         )
     }
 
+    const searchEnrolled = (query) => {
+        return axios.get(`${API_ROUTES}/api/course/search/enquery?q=${query}`,
+            {
+                headers: {
+                    'authorization': `token ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+    }
+
+    const getTopselling = () => {
+        return axios.get(`${API_ROUTES}/api/course/top-selling`,
+            {
+                headers: {
+                    'authorization': `token ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+    }
 
     const getCourseMedia = (courseID) => {
         return axios.get(`${API_ROUTES}/api/topic/${courseID}`,
@@ -136,7 +157,7 @@ function useServerHook() {
     }
 
 
-    return {getEnrolled, getExplores,createCourse,uploadMedia, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses, getCourseMedia, purchaseCourse }
+    return {getEnrolled, getExplores,createCourse,uploadMedia,getTopselling, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses,searchEnrolled, getCourseMedia, purchaseCourse }
 }
 
 

@@ -29,7 +29,7 @@ export default function CourseInfo() {
                 <p>/</p>
                 <Link to="/dashboard/courses">Courses</Link>
                 <p>/</p>
-                <Link to="/dashboard/course/47833843">{courseData?.title}</Link>
+                <button>{courseData?.title}</button>
             </div>
 
                 <div className='flex flex-col space-y-5 '>
@@ -47,7 +47,13 @@ export default function CourseInfo() {
                                     </svg>
                                 </button>
                             </div>
-                            <button className=" bg-white h-8 w-8 rounded-full flex items-center justify-center">
+                            <button 
+                           
+                            onClick={(e)=>{
+                                window.location='mailto:'+courseData?.author?.email
+                                e.preventDefault();
+                            }}
+                            className=" bg-white h-8 w-8 rounded-full flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-700">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                                 </svg>
@@ -59,7 +65,7 @@ export default function CourseInfo() {
                         <div className="flex items-center space-x-8 border-b border-gray-100 text-gray-400">
                             <NavLink to="summary" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Summary</NavLink>
                             {/* <NavLink to="channel" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Channel</NavLink> */}
-                            <NavLink to="lessons" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Lessons</NavLink>
+                            <NavLink state={courseData} to="lessons" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Lessons</NavLink>
                             {/* <NavLink to="exercises" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Exercises</NavLink> */}
                             {/* <NavLink to="qna" className={({ isActive }) => isActive ? "text-blue-500 border-b-4 border-blue-500" : ''}>Q&A</NavLink> */}
                         </div>

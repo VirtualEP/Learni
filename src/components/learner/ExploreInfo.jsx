@@ -3,13 +3,15 @@ import { API_ROUTES, useServerHook } from "../../hooks/useServerHook";
 import { usePaystackPayment } from 'react-paystack';
 import { useAuthContext } from "../../context/Auth";
 import CryptoJS from 'crypto-js';
+import numToCurrency from "../../utils/numToCurrency";
+import useNotifyHook from "../../hooks/notifyHook";
 
 export default function ExploreInfo({ data }) {
 
   const { getTopics, purchaseCourse } = useServerHook()
   const [loading, setLoading] = useState(false)
   const [topics, setTopics] = useState([])
-
+  const toast = useNotifyHook()
 
   const { user } = useAuthContext();
 
@@ -45,8 +47,9 @@ export default function ExploreInfo({ data }) {
 
       purchaseCourse(data_).then((response) => {
         console.log(response.data);
+        toast(response.data.message,"Purchase Alert",{leading:'',color:'yellow'});
       }).catch((error) => {
-        console.log(error.message);
+        toast(error.message);
       }).finally(() => { });
 
 
@@ -218,7 +221,7 @@ export default function ExploreInfo({ data }) {
                 className="bg-blue-600 w-full text-white p-4 flex  justify-center md:hidden cursor-pointer"
                 htmlFor="my-modal-4"
               >
-                Enroll now GHS {data.price}
+                Enroll now {numToCurrency.format(data.price)}
               </button>
               <button
                 onClick={initializePaymentAction}
@@ -240,7 +243,7 @@ export default function ExploreInfo({ data }) {
         className="bg-blue-600 text-white p-4 hidden m-5 rounded-xl justify-center md:flex cursor-pointer"
         htmlFor="my-modal-4"
       >
-        Enroll now GHS {data.price}
+        Enroll now GHS {numToCurrency.format(data.price)}
       </button>
     </>
   );
