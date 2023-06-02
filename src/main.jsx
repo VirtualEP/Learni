@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthContextProvider>
       <App />
       <Toaster
-        position="top-center"
+        position="top-right"
         reverseOrder={false}
       />
     </AuthContextProvider>

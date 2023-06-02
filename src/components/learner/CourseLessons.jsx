@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useParams } from 'react-router'
 import { useServerHook } from '../../hooks/useServerHook'
-
+import { useLocation } from 'react-router-dom'
 
 const Lessons = [
     {
@@ -122,6 +122,7 @@ export default function CourseLessons() {
     const [selectedMedia, setSelectedMedia] = useState()
     const { getCourseMedia } = useServerHook()
     const params = useParams()
+    const location = useLocation()
 
     function onPreviewMedia(data) {
         setSelectedMedia(data)
@@ -133,7 +134,6 @@ export default function CourseLessons() {
             setTopics(response.data.topics);
         }).catch(err => { }).finally(() => { })
     }, [])
-
 
     return (<>
         <div className='flex-1 flex flex-col space-y-5 py-5'>
@@ -153,7 +153,7 @@ export default function CourseLessons() {
             </div>
         </div>
         <AnimatePresence >
-            {showPlayer && <LessonPlayer data={selectedMedia} vissible={showPlayer} onClose={() => setShowPlayer(false)} />}
+            {showPlayer && <LessonPlayer course={location.state} data={selectedMedia} vissible={showPlayer} onClose={() => setShowPlayer(false)} />}
         </AnimatePresence>
     </>
     )

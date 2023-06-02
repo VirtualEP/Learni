@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../context/Auth'
 import { API_ROUTES } from '../../hooks/useServerHook'
+import numToCurrency from '../../utils/numToCurrency'
 
 
 export default function MyCourseCard({ item }) {
@@ -41,11 +42,11 @@ export default function MyCourseCard({ item }) {
                 <div className='flex flex-col h-full bg-opacity-10  flex-1'>
                     <div className='border-b py-3 px-3 space-y-1 flex-1'>
                         <h3 className='font-bold text-gray-900'>{item.title}</h3>
-                        <p className='text-sm font-light text-blue-400 '>{item.students.legnth} Students</p>
+                        <p className='text-sm font-light text-blue-400 '>{item.students.length} Enrollment{item.students.length > 1 ? 's':''}</p>
                     </div>
                     <div className='flex items-center justify-between p-3 text-slate-500 text-sm'>
                         <p>Price</p>
-                        <p>GHS {item.price}</p>
+                        <p>{numToCurrency.format(item.price)}</p>
                     </div>
                 </div>
             </div>

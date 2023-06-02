@@ -3,8 +3,10 @@ import MyCourseCard from './MyCourseCard'
 import { useAuthContext } from '../../context/Auth'
 import CreateCourse from '../instructor/CreateCourse'
 import { AnimatePresence } from 'framer-motion'
-import { useServerHook } from '../../hooks/useServerHook'
+import { API_ROUTES, useServerHook } from '../../hooks/useServerHook'
 import _ from 'lodash'
+import { Link, useNavigate } from 'react-router-dom'
+import numToCurrency from '../../utils/numToCurrency'
 
 
 export default function CoursesList() {
@@ -12,7 +14,10 @@ export default function CoursesList() {
     const [courses, setCourses] = useState([])
     const [showCreateCourse, setShowCreateCourse] = useState(false)
     const [loading, setLoading] = useState(false)
-    const { getMyCourses } = useServerHook()
+    const { getMyCourses, getTopselling } = useServerHook()
+    const [topSelling, setTopSelling] = useState({ courses: [], tags: [] })
+
+    const navigate = useNavigate()
 
     const { user } = useAuthContext()
 
@@ -25,9 +30,11 @@ export default function CoursesList() {
             if (user.user.accountType === 'instructor') {
                 setCourses(response.data.courses);
             }
+            if (response.data.enrollments.length < 1) {
+                getTopselling()
+                    .then(data => setTopSelling(data.data))
+            }
         }).finally(() => setLoading(false))
-
-
     }, [])
 
 
@@ -65,13 +72,67 @@ export default function CoursesList() {
                     }
                 </div>
 
-                {!loading && !courses.length && <div className="bg-blue-100 text-blue-900 py-5 px-5">
-                    <p>You currently have haven't enrolled yourself into any course yet.</p>
-                </div>}
+
+
+                {!loading && !courses.length &&
+
+                    <div className="bg-blue-100/20 border backdrop-blur-2xl rounded text-blue-900 py-5 px-5 mb-10 flex flex-col space-y-5 font-light">
+                        <div className="flex flex-col space-y-2">
+                            <h3 className="font-bold ">Welcome to <span>I</span><span>Learn</span></h3>
+                            <p className="text-sm text-slate-400">Welcome to iLearn, where your learning journey begins! We're here to guide you through the first steps to help you get the most out of our platform. Follow these simple instructions to get started</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row items-baseline space-x-5">
+                            <div className="lg:w-1/4 flex flex-col space-y-2">
+                                <h3 className="font-medium text-sm">Step 1: Create Your Account</h3>
+                                <p className="text-sm text-slate-400">create your iLearn account. Choose a unique username and a strong password to keep your account secure.</p>
+                            </div>
+                            <div className="lg:w-1/4 flex flex-col space-y-2">
+                                <h3 className="font-medium text-sm">Step 2: Explore Course</h3>
+                                <p className="text-sm text-slate-400">Once you've created your account, take some time to browser through our extensive range of course categories.</p>
+                            </div>
+                            <div className="lg:w-1/4 flex flex-col space-y-2">
+                                <h3 className="font-medium text-sm">Step 3: Enroll in a Course</h3>
+                                <p className="text-sm text-slate-400">Found a course that aligns with your learning objectives? Great!. Enroll in the course to gain access to its content.</p>
+                            </div>
+                            <div className="lg:w-1/4 flex flex-col space-y-2">
+                                <h3 className="font-medium text-sm">Engage with the Course Content</h3>
+                                <p className="text-sm text-slate-400">Once you've enrolled in a course, dive into the course content and explore the lessons, quizzes and resources provided by instructor.</p>
+                            </div>
+                        </div>
+                        <div className="border-t pt-5 flex flex-col space-y-5">
+                            <h3 className="text-sm font-bold">Best Sellers 🔥</h3>
+                            <div className="flex flex-row items-center  overflow-x-auto  no-scrollbar space-x-4">
+                                {topSelling.courses.map((course, index) =>
+                                    <div
+                                    onClick={e=>navigate('/dashboard/explore',{state:{exploreCourses:topSelling,selected:course }})}
+                                    key={'top-seller-' + index} className="bg-white scale-90 md:scale-100 h-[300px] md:max-h-[250px] relative flex md:w-[500px] w-full shrink-0  rounded-md border border-gray-100">
+                                        <div className="flex-1 flex aspect-square">
+                                            <img className="flex-1"  src={API_ROUTES+'/'+course.cover} onError={e=>e.target.src='https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png'} />
+                                        </div>
+                                        <div className="absolute flex justify-between items-baseline bg-black/10 backdrop-blur-sm w-full p-3 bottom-0 left-0">
+                                            <div>
+                                                <h3 className="font-bold text-lg">{course.title}</h3>
+                                                <div className="flex items-center space-x-2">
+                                                    <div className="h-8 w-8 rounded-full flex items-center justify-center bg-gray-400">
+                                                        <p className="font-medium text-xs">{course.author.firstName[0]+""+course.author.lastName[0]}</p>
+                                                    </div>
+                                                    <p className="font-medium text-sm">{course.author.firstName+" "+course.author.lastName}</p>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button className="bg-blue-600 text-white px-5 text-xs font-medium  rounded-full py-2">Enroll {numToCurrency.format(course.price)}</button>
+                                            </div>
+                                        </div>
+                                    </div>)}
+
+                            </div>
+                        </div>
+                    </div>
+                }
 
                 <div className="h-[100%] flex-1 ">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        {courses.map((course,i) => ( <MyCourseCard item={course} key={`${i}-grid-course`} />))}
+                        {courses.map((course, i) => (<MyCourseCard item={course} key={`${i}-grid-course`} />))}
                     </div>
                     {/* {_.chunk(courses, 4).map((chunk, i) =>
                         <div key={'' + i + "-course"} className="min-h-[300px] flex items-center space-x-5 py-5">
@@ -90,3 +151,8 @@ export default function CoursesList() {
         </div>
     )
 }
+
+
+
+
+
