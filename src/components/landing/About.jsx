@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
-    <div className="flex flex-col md:flex-row  items-center container mx-auto space-x-0 md:space-x-10 space-y-5 md:space-y-3 md:space-y-0 py-10 px-5 md:px-0">
+    <div id='about' className="flex flex-col md:flex-row  items-center container mx-auto space-x-0 md:space-x-10 space-y-5  md:space-y-0 py-10 px-5 md:px-0">
       <div className="w-full md:w-1/3 bg-gray-100 h-[220px] rounded-md"></div>
       <div className="flex-1 flex flex-col space-y-3">
         <div>

@@ -7,7 +7,7 @@ import african from "../../assets/african.jpeg";
 
 const Hero = () => {
   return (
-    <div className="container mx-auto flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-10 my-10 items-center">
+    <div id='home' className="container mx-auto flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-10 my-10 items-center">
       <div className="w-full md:w-1/3 shrink-0 px-5 py-10 md:py-0 md:px-0">
         <h3 className="text-[30px] md:text-[50px] font-bold leading-relaxed">
           Quality <span className="text-blue-500">Education</span> accessible

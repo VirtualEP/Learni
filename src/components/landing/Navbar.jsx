@@ -64,16 +64,16 @@ function Navbar() {
                 Courses
               </li>
             </a>
-            <a href="/#mentors">
+            <a href="/#about">
               <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
-                Mentors
+                About
               </li>
             </a>
           </ul>
         </div>
         <div className="hidden md:flex mr-4">
           <a href="/signin">
-            <button className=" px-2 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className="mx-2 px-2 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign In
             </button>
           </a>
@@ -105,7 +105,7 @@ function Navbar() {
           <div>
             <div className="flex w-full items-center justify-between">
               <h1 className="text-2xl cursor-pointer font-bold">
-                i<span className="text-blue-600 ">Learn</span>{" "}
+                Dev<span className="text-blue-600 ">Tray</span>{" "}
               </h1>
               <div
                 onClick={handleOpen}
