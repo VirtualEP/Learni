@@ -48,7 +48,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Courselo />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >

@@ -1,11 +1,30 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { API_ROUTES } from '../../hooks/useServerHook';
-import VideoJS from '../Videojs';
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    LinkedinShareButton,
+    TelegramShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
+
+import {
+    EmailIcon,
+    FacebookIcon,
+    LinkedinIcon,
+    TelegramIcon,
+    TwitterIcon,
+    WhatsappIcon,
+} from "react-share";
+
 
 export default function LessonPlayer({ data, onClose, course }) {
 
     const playerRef = React.useRef();
+
+    const [shareModal, setShareModal] = React.useState(false)
 
     return (
         <motion.div animate={{ scale: 1, opacity: 1 }} initial={{ scale: 0, opacity: 0 }} exit={{ translateY: 10, opacity: 0 }} className={`flex absolute top-0 left-0 w-screen h-[90vh] md:h-screen bg-gray-100 flex-col flex-1 z-10`}>
@@ -49,14 +68,49 @@ export default function LessonPlayer({ data, onClose, course }) {
                                 <source src={`${API_ROUTES}/video/${data.src}`} type="video/mp4" />
                             </video>}
                         </div>
-                        <div className="px-5 border-b uppercase flex items-center space-x-5 py-5">
-                            <button className="flex space-x-2 items-center text-xs">
+                        <div className="px-5 border-b uppercase flex items-center space-x-5 py-5 relative">
+                            <button
+                                 onClick={e=>setShareModal(true)}
+                                className="flex space-x-2 items-center text-xs">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
                                 </svg>
 
                                 <p className="uppercase font-normal text-gray-500">Share course</p>
                             </button>
+                            <AnimatePresence>
+                                {shareModal && <motion.div initial={{opacity:0,translateX: -3}}  animate={{opacity:1,translateX:0}} exit={{ opacity: 0, translateX: -3 }} className="animate bg-white absolute left-0 top-12 flex items-center space-x-3 px-2 py-2 shadow-sm rounded">
+                                    <TwitterShareButton>
+                                        <TwitterIcon size={32} round={true} />
+                                    </TwitterShareButton>
+                                    <EmailShareButton>
+                                        <EmailIcon size={32} round={true} />
+                                    </EmailShareButton>
+                                    <FacebookShareButton>
+                                        <FacebookIcon size={32} round={true} />
+                                    </FacebookShareButton>
+                                    <LinkedinShareButton>
+                                        <LinkedinIcon size={32} round={true} />
+                                    </LinkedinShareButton>
+                                    <TelegramShareButton>
+                                        <TelegramIcon size={32} round={true} />
+                                    </TelegramShareButton>
+                                    <TwitterShareButton>
+                                        <TwitterIcon size={32} round={true} />
+                                    </TwitterShareButton>
+                                    <WhatsappShareButton round={true} >
+                                        <WhatsappIcon size={32} round={true} />
+                                    </WhatsappShareButton>
+                                    <button 
+                                    onClick={e=>setShareModal(false)}
+                                    className="h-8 w-8 shrink-0 rounded-full border bg-slate-500 text-white flex items-center justify-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+
+                                    </button>
+                                </motion.div>}
+                            </AnimatePresence>
                             <button
                                 onClick={(e) => {
                                     window.location = 'mailto:' + course?.author?.email
