@@ -4,7 +4,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 function Navbar() {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState("#ecf0f3");
+  const [navBg, setNavBg] = useState("#ffffff");
   const [Color, setColor] = useState("#1f2937");
 
   const handleOpen = () => {
@@ -31,8 +31,8 @@ function Navbar() {
       }
       style={{ backgroundColor: `${navBg}` }}
     >
-      <div className="flex justify-between items-center w-full h-full px-2 2xl:px-16">
-        <div className="flex items-center">
+      <div className="flex items-center justify-between w-full h-full px-2 2xl:px-16 ">
+        <div className="flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -48,37 +48,37 @@ function Navbar() {
             />
           </svg>
           <h1 className="text-2xl font-bold cursor-pointer">
-            i<span className="text-blue-600 ">Learn</span>{" "}
+            Dev<span className="text-blue-600 ">Tray</span>{" "}
           </h1>
           {/* MENU ITEMS */}
-          <div className="hidden md:flex items-center justify-center">
-            <ul style={{ color: `${Color}` }} className="hidden md:flex">
-              <a href="/#home">
-                <li className="ml-10 text-md  border-b-4 hover:border-blue-600">
-                  Home
-                </li>
-              </a>
-              <a href="/#courses">
-                <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
-                  Courses
-                </li>
-              </a>
-              <a href="/#mentors">
-                <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
-                  Mentors
-                </li>
-              </a>
-            </ul>
-          </div>
         </div>
-        <div className="hidden md:flex pr-4">
+        <div className="hidden md:flex justify-center items-center">
+          <ul style={{ color: `${Color}` }} className="hidden md:flex">
+            <a href="/#home">
+              <li className="text-md  border-b-4 hover:border-blue-600">
+                Home
+              </li>
+            </a>
+            <a href="/#courses">
+              <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
+                Courses
+              </li>
+            </a>
+            <a href="/#about">
+              <li className="ml-10 text-md  hover:border-b-4 hover:border-blue-600">
+                About
+              </li>
+            </a>
+          </ul>
+        </div>
+        <div className="hidden md:flex mr-4">
           <a href="/signin">
-            <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className="mx-2 px-2 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign In
             </button>
           </a>
           <a href="/signup">
-            <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className=" px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
               Sign Up
             </button>
           </a>
@@ -105,7 +105,7 @@ function Navbar() {
           <div>
             <div className="flex w-full items-center justify-between">
               <h1 className="text-2xl cursor-pointer font-bold">
-                i<span className="text-blue-600 ">Learn</span>{" "}
+                Dev<span className="text-blue-600 ">Tray</span>{" "}
               </h1>
               <div
                 onClick={handleOpen}
