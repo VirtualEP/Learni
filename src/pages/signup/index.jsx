@@ -57,40 +57,48 @@ export default function Signup() {
 
   if (AccountType !== "") {
     return (
-      <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-        <div className="max-w-screen-xl sm:m-20 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+      <div className="min-h-screen bg-white text-gray-900 flex p-4">
+        <div className="bg-white sm:rounded-lg flex justify-center flex-1">
+          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col">
             <div>
               <a href="/">
-                <h1 className="text-4xl cursor-pointer font-bold justify-center flex ">
-                  i<span className="text-blue-600 ">Learn</span>
+                <h1 className="text-2xl cursor-pointer font-bold justify-start pl-8 flex">
+                  Dev<span className="text-blue-600 ">Tray</span>
                 </h1>
               </a>
             </div>
-            <div className="mt-10 flex flex-col items-center">
-              <h1 className="text-2xl xl:text-3xl font-bold">
-                {" "}
-                Get started for free
-              </h1>
-              <div className="w-full flex-1 mt-8">
+            <div className="flex-1 flex flex-col items-center justify-center">
+                <div className="w-full flex-1 mt-6 flex flex-col justify-center">
                 {/* GOOGLE LOGIN */}
-                <div className="flex flex-col items-center">
-                  <GoogleLogin
+                  {/* <GoogleLogin
                     clientId={VITE_CLIENT_ID}
                     buttonText="Sign up with Google"
                     onSuccess={null}
                     onFailure={null}
                     cookiePolicy="single_host_origin"
                     className={`max-w-xs w-full flex items-center justify-center`}
-                  />
+                  /> */}
                 </div>
-                <div className="my-12 border-b text-center">
+                {/* <div className="my-12 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                     Or sign up with e-mail
                   </div>
-                </div>
+                </div> */}
                 <form method="POST" onSubmit={(e) => onSignUpWithForm(e)}>
-                  <div className="mx-auto max-w-lg">
+                  <div className="mx-auto max-w-sm">
+                    <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
+                      {" "}
+                      Get started for free
+                    </h1>
+                    <div className="w-full flex text-sm mt-2 mb-8">
+                      <p className="font-semibold">Already have an account?</p>
+                      <Link
+                        to="/signin"
+                        className="font-bold text-sm text-gray-600 no-underline"
+                      >
+                        <span className="ml-2 text-blue-600">Sign in.</span>
+                      </Link>
+                    </div>
                     <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row items-center md:space-x-3 w-full">
                       <div className="flex flex-col flex-1 space-y-2 w-full">
                         <input
@@ -204,22 +212,17 @@ export default function Signup() {
                     </button>
                   </div>
                 </form>
-                <div className="w-full flex text-sm items-center justify-center mt-4">
-                  <p>Already have an account?</p>
-                  <Link
-                    to="/signin"
-                    className="font-bold text-xs text-gray-600 no-underline"
-                  >
-                    <span className="ml-2 underline text-xs">Sign in here</span>
-                  </Link>
-                </div>
-              </div>
             </div>
           </div>
           {/* Image render */}
-          <div className="flex-1 bg-indigo-100 text-center hidden lg:flex">
-            <div className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat justify-center items-center flex">
-              <img src={instructor} />
+          <div
+            className="flex-1 bg-indigo-100 text-center hidden bg-cover lg:flex"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+            }}
+          >
+            <div className="m-12 xl:m-16 w-full bg-contain bg-center justify-center items-center flex bg-no-repeat">
+              {/* <img src={student} /> */}
             </div>
           </div>
         </div>

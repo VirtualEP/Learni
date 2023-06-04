@@ -1,13 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import black from '../../assets/blackgirl.png'
+import child from '../../assets/child.jpeg'
 import boy from "../../assets/boy.jpeg";
 import group from "../../assets/group.jpeg";
 import african from "../../assets/african.jpeg";
 
 const Hero = () => {
   return (
-    <div id='home' className="container mx-auto flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-10 my-10 items-center">
+    <div
+      id="home"
+      className="container mx-auto md:h-screen flex flex-col space-y-5 md:space-y-0 md:flex-row md:space-x-10 items-center"
+    >
       <div className="w-full md:w-1/3 shrink-0 px-5 py-10 md:py-0 md:px-0">
         <h3 className="text-[30px] md:text-[50px] font-bold leading-relaxed">
           Quality <span className="text-blue-500">Education</span> accessible
@@ -24,7 +27,7 @@ const Hero = () => {
       </div>
       <div className="w-full flex-col space-y-5 hidden md:flex">
         <div className="flex items-center space-x-5">
-          <img src={black} alt="blac" className="h-[230px] w-1/2 rounded-md" />
+          <img src={child} alt="blac" className="h-[230px] w-1/2 rounded-md" />
           <img src={boy} alt="blac" className="h-[230px] w-1/2 rounded-md" />
         </div>
         <div className="flex items-center space-x-5">
