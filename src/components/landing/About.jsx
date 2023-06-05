@@ -6,16 +6,15 @@ const About = () => {
   return (
     <div
       id="about"
-      className="flex flex-col md:flex-row min-h-screen items-center container mx-auto space-x-0 md:space-x-10 space-y-5  md:space-y-0 py-10 px-5 md:px-0"
+      className="flex flex-col-reverse md:flex-row min-h-screen items-center container mx-auto space-x-0 md:space-x-10 space-y-5  md:space-y-0 py-10 px-5 md:px-0"
     >
-      <div className="w-full md:w-1/3  h-[220px] ">
+      <div className="w-full md:w-1/3 border-4">
         <Player
           autoplay
           loop
           src="https://assets1.lottiefiles.com/packages/lf20_v1yudlrx.json"
-          // src="../../assets/about-us.json"
           style={{ height: "300px", width: "300px" }}
-        ></Player>{" "}
+        ></Player>
       </div>
       <div className="flex-1 flex flex-col space-y-3">
         <div>

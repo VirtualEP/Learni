@@ -59,14 +59,8 @@ export default function Signup() {
     return (
       <div className="min-h-screen bg-white text-gray-900 flex p-4">
         <div className="bg-white sm:rounded-lg flex justify-center flex-1">
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col">
-            <div>
-              <a href="/">
-                <h1 className="text-2xl cursor-pointer font-bold justify-start pl-8 flex">
-                  Dev<span className="text-blue-600 ">Tray</span>
-                </h1>
-              </a>
-            </div>
+          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex items-center">
+            
             <div className="flex-1 flex flex-col items-center justify-center">
               <div className="w-full flex-1 mt-6 flex flex-col justify-center">
                 {/* GOOGLE LOGIN */}
@@ -86,6 +80,13 @@ export default function Signup() {
                 </div> */}
               <form method="POST" onSubmit={(e) => onSignUpWithForm(e)}>
                 <div className="mx-auto max-w-sm">
+                <div>
+              <a href="/">
+                <h1 className="text-2xl cursor-pointer font-bold justify-start flex  mb-24">
+                  Dev<span className="text-blue-600 ">Tray</span>
+                </h1>
+              </a>
+            </div>
                   <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
                     {" "}
                     Get started for free
@@ -218,7 +219,7 @@ export default function Signup() {
           <div
             className="flex-1 bg-indigo-100 text-center hidden bg-cover lg:flex"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+              backgroundImage: `url('https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')`,
             }}
           >
             <div className="m-12 xl:m-16 w-full bg-contain bg-center justify-center items-center flex bg-no-repeat">

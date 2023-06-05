@@ -32,7 +32,7 @@ function Navbar() {
       style={{ backgroundColor: `${navBg}` }}
     >
       <div className="flex items-center justify-between w-full h-full px-2 2xl:px-16 ">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -120,29 +120,35 @@ function Navbar() {
               </p>
             </div>
           </div>
-          <div className="py-4 flex flex-col">
+          <div className="py-4 flex flex-col min-h-screen">
             <ul className="uppercase">
-              <a href="/">
+              <a href="/#home">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   Home
                 </li>
               </a>
-              <a href="/#about">
+              <a href="/#courses">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
                   Courses
                 </li>
               </a>
-              <a href="/#skills">
+              <a href="/#about">
                 <li onClick={() => setNav(false)} className="py-4 text-sm">
-                  Mentors
+                  About
                 </li>
               </a>
-              <button className="text-lg  hover:border-b-2 hover:border-blue-600 text-blue-600">
-                Sign In
-              </button>
-              <button className="ml-10 px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
-                Sign Up
-              </button>
+              <div>
+                <a href="/signin">
+                  <button className="mx-2 px-2 py-2 text-blue-600 font-normal hover:border-b-2 hover:border-blue-600">
+                    Sign In
+                  </button>
+                </a>
+                <a href="/signup">
+                  <button className=" px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-full">
+                    Sign Up
+                  </button>
+                </a>
+              </div>
             </ul>
           </div>
         </div>

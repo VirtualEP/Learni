@@ -30,15 +30,8 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex p-4">
-      <div className="bg-white sm:rounded-lg flex justify-center flex-1  ">
+      <div className="bg-white sm:rounded-lg flex justify-center flex-1 ">
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col ">
-          <div>
-            <a href="/">
-              <h1 className="text-2xl cursor-pointer font-bold justify-start flex pl-8">
-                Dev<span className="text-blue-600 ">Tray</span>
-              </h1>
-            </a>
-          </div>
           <div className="flex-1 flex flex-col items-center justify-center">
             <div className="w-full flex-1 mt-6 flex flex-col justify-center ">
               {/* GOOGLE LOGIN */}
@@ -59,6 +52,13 @@ export default function Login() {
               </div> */}
               <form method="POST" onSubmit={(e) => onSignInWithForm(e)}>
                 <div className="mx-auto  max-w-sm">
+                  <div>
+                    <a href="/">
+                      <h1 className="text-2xl cursor-pointer font-bold justify-start flex mb-24">
+                        Dev<span className="text-blue-600 ">Tray</span>
+                      </h1>
+                    </a>
+                  </div>
                   <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
                     {" "}
                     Welcome Back
