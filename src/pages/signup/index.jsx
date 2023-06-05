@@ -10,7 +10,7 @@ import instructor from "../../assets/instructor.png";
 
 export const AccountTypes = {
   instructor: "instructor",
-  student: "student",
+  student: "learner",
 };
 
 export default function Signup() {
