@@ -41,7 +41,7 @@ export default function AuthContextProvider({ children }) {
         setLoading(true)
         if (!email || !password || !firstName || !lastName || !country || !type || email === '' || password === '' || firstName === '' || lastName === '' || country === '' || type === '') return toast("Can't have any field empty.", "Form Error", { leading: false });
         signup({ email, password, firstName, lastName, country, type })
-            .then((data) => { setUser(data); return toast("Account registration completed successfully.", "Authentication Complete", { leading: false }); })
+            .then((data) => {  return toast("Account registration completed successfully.", "Authentication Complete", { leading: false }); })
             .catch((error) => { setUser(null); return toast("Signin could not be completed. " + error.response.data.message, "Authentication Failed", { leading: false, color: 'red' }); })
             .finally(() => setLoading(false))
     }

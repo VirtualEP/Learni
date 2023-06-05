@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useAuthContext } from "../context/Auth"
 
-export const API_ROUTES = "http://localhost:8080";
+export const API_ROUTES = "https://api.devtray.net";
 
 function useServerHook() {
 
@@ -20,7 +20,7 @@ function useServerHook() {
 
     const createCourse = (course) => {
         return axios.post(`${API_ROUTES}/api/course`,
-            { ...course,action:'upload_course_cover' }, {
+            { ...course, action: 'upload_course_cover' }, {
             headers: {
                 'authorization': `token ${user.token}`,
                 'Content-Type': 'multipart/form-data',
@@ -32,7 +32,7 @@ function useServerHook() {
 
     const uploadMedia = (media) => {
         return axios.post(`${API_ROUTES}/api/upload`,
-            { ...media,type:'video',action:'upload_courses_video' }, {
+            { ...media, type: 'video', action: 'upload_courses_video' }, {
             headers: {
                 'authorization': `token ${user.token}`,
                 'Content-Type': 'multipart/form-data',
@@ -157,7 +157,7 @@ function useServerHook() {
     }
 
 
-    return {getEnrolled, getExplores,createCourse,uploadMedia,getTopselling, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses,searchEnrolled, getCourseMedia, purchaseCourse }
+    return { getEnrolled, getExplores, createCourse, uploadMedia, getTopselling, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses, searchEnrolled, getCourseMedia, purchaseCourse }
 }
 
 
