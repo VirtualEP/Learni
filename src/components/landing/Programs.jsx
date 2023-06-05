@@ -3,7 +3,7 @@ import numToCurrency from '../../utils/numToCurrency';
 
 const Programs = () => {
   return (
-    <div id="courses" className="container mx-auto flex flex-col space-y-20 my-20 hide-scrollbar py-5 h-screen">
+    <div id="courses" className="container mx-auto flex flex-col space-y-20 my-20 hide-scrollbar py-5 min-h-screen">
       <div className="flex flex-col space-y-10">
         <h2 className="text-center text-2xl font-bold">Our popular courses</h2>
         <div className="flex text-sm items-center justify-between text-gray-500 overflow-y-auto gap-4">

@@ -63,15 +63,14 @@ function SignupOptions({ setAccountType }) {
               </div>
             </div>
             <button
-              disabled={disable}
               onClick={() => setAccountType(type)}
-              className="disabled:opacity-75 disabled:cursor-not-allowed rounded-md px-4 py-3 my-4 mx-auto flex items-center bg-blue-600 text-white"
+              className=" rounded-md px-4 py-3 my-4 mx-auto flex items-center bg-blue-600 text-white"
             >
               Create an account
             </button>
-            <div className="w-full text-center">
+            <div className="w-full text-center text-sm">
               <p className="">
-                <span className="text-zinc-400">Already have an account?</span>{" "}
+                <span className="text-zinc-700">Already have an account?</span>{" "}
                 <Link to="/signin" className="cursor-pointer underline">
                   Login here
                 </Link>

@@ -34,7 +34,7 @@ export default function Login() {
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col ">
           <div>
             <a href="/">
-              <h1 className="text-2xl cursor-pointer font-bold justify-start flex ">
+              <h1 className="text-2xl cursor-pointer font-bold justify-start flex pl-8">
                 Dev<span className="text-blue-600 ">Tray</span>
               </h1>
             </a>
