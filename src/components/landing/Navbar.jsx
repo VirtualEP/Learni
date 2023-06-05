@@ -55,7 +55,7 @@ function Navbar() {
         <div className="hidden md:flex justify-center items-center">
           <ul style={{ color: `${Color}` }} className="hidden md:flex">
             <a href="/#home">
-              <li className="text-md  border-b-4 hover:border-blue-600">
+              <li className="text-md  hover:border-b-4 hover:border-blue-600">
                 Home
               </li>
             </a>
@@ -73,12 +73,12 @@ function Navbar() {
         </div>
         <div className="hidden md:flex mr-4">
           <a href="/signin">
-            <button className="mx-2 px-2 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className="mx-2 px-2 py-2 text-blue-600 font-normal hover:border-b-2 hover:border-blue-600">
               Sign In
             </button>
           </a>
           <a href="/signup">
-            <button className=" px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-md">
+            <button className=" px-4 py-2 text-white border bg-blue-600 border-blue-600 rounded-full">
               Sign Up
             </button>
           </a>

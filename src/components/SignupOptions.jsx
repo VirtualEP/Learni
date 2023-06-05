@@ -6,22 +6,23 @@ import female from "../assets/female.png";
 
 function SignupOptions({ setAccountType }) {
   const [type, setType] = useState("");
+  const [disable, setDisabled] = useState(true)
   return (
     <div>
       <div className="h-screen flex">
-        <div className="w-full max-w-[700px] m-auto bg-white rounded-lg py-10 px-16 border-2">
+        <div className="w-full max-w-2xl m-auto bg-white rounded-lg py-8 px-10 border-2">
           <div className=" ">
             <div className="flex items-center justify-center  mb-4">
-              <a href="/" className="text-4xl font-bold">
-                i<span className="text-blue-600 ">Learn</span>{" "}
+              <a href="/" className="text-2xl font-bold">
+                Dev<span className="text-blue-600 ">Tray</span>{" "}
               </a>
             </div>
             <div>
-              <p className="text-3xl font-bold py-4 text-center">
+              <p className="text-lg font-bold py-4 text-center">
                 Join as an instructor or a learner
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:px-8 py-6 md:gap-8 w-full justify-center ">
+            <div className="flex flex-col md:flex-row md:space-x-5 space-y-20 md:space-y-0 md:px-8 py-6 md:gap-8 w-full justify-center ">
               <div className="relative cursor-pointer w-full shadow-sm rounded-xl flex flex-col justify-center px-4 h-[200px]">
                 <img
                   className="rounded-xl group-hover:opacity-25 "
@@ -38,7 +39,7 @@ function SignupOptions({ setAccountType }) {
                     }}
                     type="radio"
                     name="radio-10"
-                    className="radio "
+                    className="radio border-2 border-gray-600"
                   />
                 </label>
               </div>
@@ -56,20 +57,20 @@ function SignupOptions({ setAccountType }) {
                     }}
                     type="radio"
                     name="radio-10"
-                    className="radio"
+                    className="radio border-2 border-gray-600"
                   />
                 </label>
               </div>
             </div>
             <button
               onClick={() => setAccountType(type)}
-              className="rounded-md px-4 py-3 my-2 mx-auto flex items-center bg-blue-600 text-white"
+              className=" rounded-md px-4 py-3 my-4 mx-auto flex items-center bg-blue-600 text-white"
             >
               Create an account
             </button>
-            <div className="w-full text-center">
-              <p className="pt-10">
-                <span className="text-zinc-400">Already have an account?</span>{" "}
+            <div className="w-full text-center text-sm">
+              <p className="">
+                <span className="text-zinc-700">Already have an account?</span>{" "}
                 <Link to="/signin" className="cursor-pointer underline">
                   Login here
                 </Link>

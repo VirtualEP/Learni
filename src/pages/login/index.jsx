@@ -31,11 +31,10 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-white text-gray-900 flex p-4">
       <div className="bg-white sm:rounded-lg flex justify-center flex-1  ">
-        <div></div>
         <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col ">
-          <div className="max-w-sm px-9">
+          <div>
             <a href="/">
-              <h1 className="text-2xl cursor-pointer font-bold justify-start flex ">
+              <h1 className="text-2xl cursor-pointer font-bold justify-start flex pl-8">
                 Dev<span className="text-blue-600 ">Tray</span>
               </h1>
             </a>
@@ -60,18 +59,18 @@ export default function Login() {
               </div> */}
               <form method="POST" onSubmit={(e) => onSignInWithForm(e)}>
                 <div className="mx-auto  max-w-sm">
-                  <h1 className="text-2xl xl:text-3xl font-semibold">
+                  <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
                     {" "}
                     Welcome Back
                   </h1>
                   <div className="w-full flex text-sm mt-4 mb-10">
-                    <p>New to DevTray?</p>
+                    <p className="font-semibold">New to DevTray?</p>
                     <Link
                       to="/signup"
                       className="font-bold text-sm text-gray-600 no-underline"
                     >
                       <span className="ml-2 text-blue-600">
-                        Create an account
+                        Create an account.
                       </span>
                     </Link>
                   </div>

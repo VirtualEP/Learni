@@ -2,7 +2,7 @@ import React from "react";
 
 const Teams = () => {
   return (
-    <div className="container mx-auto flex flex-col md:flex-row md:space-x-5 space-y-4 md:space-y-0 my-10">
+    <div className="container mx-auto flex flex-col md:flex-row md:space-x-5 space-y-4 md:space-y-0">
       <div className="md:w-1/3 flex items-center space-x-3 border border-gray-100 p-2 bg-white rounded-md">
         <div className="h-16 w-20 shrink-0 bg-yellow-400 rounded-sm flex items-center justify-center"></div>
         <div>
