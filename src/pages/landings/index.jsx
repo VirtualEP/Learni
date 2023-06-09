@@ -12,10 +12,13 @@ export default function Landings() {
           <Navbar />
         </div>
       </header>
+
+      <div className="max-w-[1300px] mx-auto">
       <Hero />
       <Teams />
       <About />
       <Programs />
+      </div>
       <Footer />
     </div>
   );

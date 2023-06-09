@@ -8,7 +8,7 @@ const About = () => {
       id="about"
       className="flex flex-col-reverse md:flex-row min-h-screen items-center container mx-auto space-x-0 md:space-x-10 space-y-5  md:space-y-0 py-10 px-5 md:px-0"
     >
-      <div className="w-full md:w-1/3 border-4">
+      <div className="w-full md:w-1/3">
         <Player
           autoplay
           loop

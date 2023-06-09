@@ -7,6 +7,12 @@ import { useAuthContext } from "../../context/Auth";
 import { VITE_CLIENT_ID } from "../../App";
 import LoadingIcon from "../../components/LoadingIcon";
 import instructor from "../../assets/instructor.png";
+import {
+  HiOutlineEye,
+  HiOutlineEyeOff,
+  HiOutlineLockClosed,
+  HiOutlineMail,
+} from "react-icons/hi";
 
 export const AccountTypes = {
   instructor: "instructor",
@@ -23,6 +29,51 @@ export default function Signup() {
   const countryInput = useRef();
 
   const { register, loading } = useAuthContext();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [hidePassword, setHidePassword] = useState(true);
+
+  const [emailError, setEmailError] = useState(false)
+
+  const [email, setEmail] = useState('');
+
+  const [password, setPassword] = useState('');
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+
+
+  //SHOW AND HIDE PASSWORD
+  const onShowPassword = () => {
+    setShowPassword(false);
+    setHidePassword(true);
+  };
+
+  const onHidePassword = () => {
+    setHidePassword(false);
+    setShowPassword(true);
+  };
+  // EMAIL FIELD ONCHANGE
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setIsButtonDisabled(value.trim() === '' || password.trim() === '');
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!value.match(emailRegex)) {
+      setEmailError('Invalid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+     // PASSWORD FIELD ONCHANGE
+     const handlePasswordChange = (e) => {
+      const value = e.target.value;
+      setPassword(value);
+      setIsButtonDisabled(email.trim() === '' || value.trim() === '');
+  };
+
 
   const onSignUpWithForm = (e) => {
     e.preventDefault();
@@ -60,7 +111,6 @@ export default function Signup() {
       <div className="min-h-screen bg-white text-gray-900 flex p-4">
         <div className="bg-white sm:rounded-lg flex justify-center flex-1">
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex items-center">
-            
             <div className="flex-1 flex flex-col items-center justify-center">
               <div className="w-full flex-1 mt-6 flex flex-col justify-center">
                 {/* GOOGLE LOGIN */}
@@ -80,13 +130,13 @@ export default function Signup() {
                 </div> */}
               <form method="POST" onSubmit={(e) => onSignUpWithForm(e)}>
                 <div className="mx-auto max-w-sm">
-                <div>
-              <a href="/">
-                <h1 className="text-2xl cursor-pointer font-bold justify-start flex  mb-24">
-                  Dev<span className="text-blue-600 ">Tray</span>
-                </h1>
-              </a>
-            </div>
+                  <div>
+                    <a href="/">
+                      <h1 className="text-2xl cursor-pointer font-bold justify-start flex  mb-24">
+                        Dev<span className="text-blue-600 ">Tray</span>
+                      </h1>
+                    </a>
+                  </div>
                   <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
                     {" "}
                     Get started for free
@@ -175,20 +225,47 @@ export default function Signup() {
                       </div>
                     )}
                   </div>
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-white border-2 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type="email"
-                    placeholder="Email"
-                    required
-                  />
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-white border-2 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type="password"
-                    placeholder="Password"
-                    required
-                  />
-                  <button
-                    disabled={loading}
+                  <div className="flex items-center mt-4">
+                    <input
+                      className="w-full px-10 py-4 rounded-lg font-medium bg-white border-2 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                      type="email"
+                      placeholder="Email"
+                      required
+                      value={email}
+                      onChange={handleEmailChange}
+                    />
+                  </div>
+                  <p className="text-sm text-red-500">
+                    {emailError ? 'Invalid Email' : ''}
+                  </p>
+                  <div className="flex flex-row justify-between mt-4">
+                    <div className="relative flex-grow">
+                      <input
+                        className="w-[100%] px-10 py-4 rounded-lg font-medium bg-white border-2 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white pl-10 pr-10"
+                        placeholder="Password"
+                        required
+                        type={`${hidePassword ? "password" : "text"}`}
+                        value={password}
+                        onChange={handlePasswordChange}
+                      />
+
+                      {hidePassword && (
+                        <HiOutlineEyeOff
+                          size={"18"}
+                          className="text-gray-400 cursor-pointer absolute flex items-center justify-center right-4 top-0 h-full"
+                          onClick={onHidePassword}
+                        />
+                      )}
+                      {showPassword && (
+                        <HiOutlineEye
+                          size={"18"}
+                          className="text-gray-400 absolute flex items-center justify-center right-4 top-0 h-full"
+                          onClick={onShowPassword}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <button 
                     type="submit"
                     className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                   >
@@ -229,9 +306,8 @@ export default function Signup() {
         </div>
         <div
           onClick={() => setShowCountryList(false)}
-          className={`${
-            showCountryList ? "flex" : "hidden"
-          } bg-black bg-opacity-0 flex-1 absolute top-0 left-0 w-full h-full z-10`}
+          className={`${showCountryList ? "flex" : "hidden"
+            } bg-black bg-opacity-0 flex-1 absolute top-0 left-0 w-full h-full z-10`}
         ></div>
       </div>
     );

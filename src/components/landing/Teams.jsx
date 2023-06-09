@@ -14,8 +14,7 @@ const Teams = () => {
          
           <p className="text-sm font-bold mb-1">Best Instructors</p>
           <p className="text-xs text-gray-400">
-            We have highly skilled & highly experienced instructors accross the
-            nation.
+            We have highly skilled &  experienced instructors.
           </p>
         </div>
       </div>

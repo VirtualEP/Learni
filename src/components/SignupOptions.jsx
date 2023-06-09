@@ -23,6 +23,24 @@ function SignupOptions({ setAccountType }) {
               </p>
             </div>
             <div className="flex flex-col md:flex-row md:space-x-5 space-y-20 md:space-y-0 md:px-8 py-6 md:gap-8 w-full justify-center ">
+            <div className="relative cursor-pointer w-full shadow-sm rounded-xl flex flex-col justify-center px-4 h-[200px]">
+                <img
+                  className="rounded-xl group-hover:opacity-25 "
+                  src={female}
+                  alt="image"
+                />
+                <label className="label">
+                  <span className="text-xl font-semibold">I am a Learner</span>
+                  <input
+                    onChange={(e) => {
+                      if (e.target.checked) setType(AccountTypes.student);
+                    }}
+                    type="radio"
+                    name="radio-10"
+                    className="radio border-2 border-gray-600"
+                  />
+                </label>
+              </div>
               <div className="relative cursor-pointer w-full shadow-sm rounded-xl flex flex-col justify-center px-4 h-[200px]">
                 <img
                   className="rounded-xl group-hover:opacity-25 "
@@ -43,24 +61,7 @@ function SignupOptions({ setAccountType }) {
                   />
                 </label>
               </div>
-              <div className="relative cursor-pointer w-full shadow-sm rounded-xl flex flex-col justify-center px-4 h-[200px]">
-                <img
-                  className="rounded-xl group-hover:opacity-25 "
-                  src={female}
-                  alt="image"
-                />
-                <label className="label">
-                  <span className="text-xl font-semibold">I am a Learner</span>
-                  <input
-                    onChange={(e) => {
-                      if (e.target.checked) setType(AccountTypes.student);
-                    }}
-                    type="radio"
-                    name="radio-10"
-                    className="radio border-2 border-gray-600"
-                  />
-                </label>
-              </div>
+            
             </div>
             <button
               onClick={() => setAccountType(type)}
