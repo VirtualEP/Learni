@@ -36,6 +36,14 @@ function MakePayment() {
     // toast message.
   }
 
+
+
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <div className="w-full">
       <h1 className="text-2xl p-4 font-bold ">Security Information</h1>
@@ -73,7 +81,7 @@ function MakePayment() {
         </form>
         <div className="border-t mt-5 py-5">
           <p className="text-gray-500 text-sm my-4">Clicking on the logout button will sign you out of your account on this device.</p>
-          <button className="bg-red-600 text-red-50 py-3  w-1/2 items-center justify-center rounded-md">Logout</button>
+          <button onClick={handleLogout} className="bg-red-600 text-red-50 py-3  w-1/2 items-center justify-center rounded-md md:hidden">Logout</button>
         </div>
       </div>
 

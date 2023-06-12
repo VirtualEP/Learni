@@ -28,6 +28,9 @@ function EditProfile() {
     // toast message.
   }
 
+
+
+
   return (
     <div className="flex flex-col w-full">
       <h1 className="text-2xl p-4 font-bold ">Personal Information</h1>
@@ -51,7 +54,7 @@ function EditProfile() {
             <label className="text-sm font-medium text-gray-500">Phone Number</label>
             <input onChange={e => setUpdateInfo(prev => ({ ...prev, phoneNumber: e.target.value }))} value={updateinfo.phoneNumber} type="tel" className="border-2 rounded-md my-2 p-3 flex-1 bg-white" placeholder="Phone number" />
           </div>
-          <button className="bg-blue-600 p-3 rounded-md text-white w-1/2">update</button>
+          <button type="submit" className="bg-blue-600 p-3 rounded-md text-white w-1/2">update</button>
         </form>
       </div>
 

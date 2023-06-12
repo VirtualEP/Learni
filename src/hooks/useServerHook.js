@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useAuthContext } from "../context/Auth"
 
-// export const API_ROUTES = "https://api.devtray.net";
-export const API_ROUTES = "http://localhost:8080";
+export const API_ROUTES = "https://api.devtray.net";
+// export const API_ROUTES = "http://localhost:8080";
 
 function useServerHook() {
 
