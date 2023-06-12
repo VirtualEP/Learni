@@ -1,74 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../context/Auth";
 import LoadingIcon from "./LoadingIcon";
+import { useServerHook } from "../hooks/useServerHook";
 
 function EditProfile() {
-  const { user, loading } = useAuthContext();
+  const { user } = useAuthContext();
+  const [updateinfo, setUpdateInfo] = useState({ firstName: user.user.firstName, lastName: user.user.lastName, phoneNumber: user.user.phoneNumber })
+  const { updateprofile } = useServerHook();
+
+  async function submitUpdateInfo(e) {
+    e.preventDefault();
+    // make server request
+
+    if (updateinfo.firstName === '' || updateinfo.lastName === '') {
+      console.log("fields are empty");
+      return;
+    }
+
+    const { data, status } = await updateprofile({ firstName: updateinfo.firstName, lastName: updateinfo.lastName, phoneNumber: updateinfo.phoneNumber, email: user.user.email });
+
+
+    if (status !== 200) {
+      console.log(data.message);
+      return;
+    }
+
+    // toast message.
+  }
 
   return (
-    <div>
-      <div className="w-full flex flex-col space-y-6 ">
-        <div className="pt-8 grid md:grid-cols-2 gap-8">
-          <div className="col-span-3 w-full h-auto shadow-sm shadow-gray-100 rounded-xl lg:p-4">
-            <div className="p-4">
-              <form method="POST">
-                <div className="flex justify-center items-center my-4 ">
-                  <div className="avatar online placeholder">
-                    <div className="bg-neutral-focus text-neutral-content rounded-full w-20 cursor-pointer">
-                      <span className="text-2xl text-white">
-                        {user?.user?.firstName
-                          .match(/(\b\S)?/g)
-                          .join("")
-                          .match(/(^\S|\S$)?/g)
-                          .join("")
-                          .toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid md:grid-cols-2 gap-4 w-full py-2">
-                  <div className="flex flex-col">
-                    <label className="text-sm capitalize py-2">First Name</label>
-                    <input
-                      className="border-2 rounded-lg bg-white  p-3 flex border-blue-100"
-                      name="name"
-                      type="text"
-                      value={`${user?.user?.firstName}`}
-                      onChange=""
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <label className="text-sm capitalize py-2">Last Name</label>
-                    <input
-                      className="border-2 rounded-lg bg-white  p-3 flex border-blue-100"
-                      name="number"
-                      type="text"
-                      value={`${user?.user?.lastName}`}
-                      onChange=""
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col py-2">
-                  <label className="text-sm capitalize py-2">Email</label>
-                  <input
-                    className="border rounded-lg bg-white disabled:bg-gray-100 disabled:border-gray-200 p-3 flex border-blue-100"
-                    name="email"
-                    type="email"
-                    disabled
-                    value={`${user?.user?.email}`}
-                    onChange=""
-                  />
-                </div>
-
-                <button className="bg-blue-600 text-white rounded-lg px-4 py-2 my-2 mx-auto flex items-center">
-                  Update
-                </button>
-                {loading && <LoadingIcon />}
-              </form>
+    <div className="flex flex-col w-full">
+      <h1 className="text-2xl p-4 font-bold ">Personal Information</h1>
+      <div className="flex flex-col md:w-1/2 px-4">
+        <form className="flex flex-1 flex-col space-y-5" method="post" onSubmit={submitUpdateInfo}>
+          <div className="flex flex-1 md:flex-row  items-center space-x-3">
+            <div className="flex flex-col flex-1 w-full">
+              <label className="text-sm font-medium text-gray-500">First Name</label>
+              <input onChange={e => setUpdateInfo(prev => ({ ...prev, firstName: e.target.value }))} value={updateinfo.firstName} type="text" className="bg-white border-2 w-full rounded-md my-2 p-3" placeholder="First name" />
+            </div>
+            <div className="flex flex-col flex-1">
+              <label className="text-sm font-medium text-gray-500">First Name</label>
+              <input onChange={e => setUpdateInfo(prev => ({ ...prev, lastName: e.target.value }))} value={updateinfo.lastName} type="text" className="bg-white border-2 w-full rounded-md my-2 p-3" placeholder="First name" />
             </div>
           </div>
-        </div>
+          <div className="flex flex-col flex-1">
+            <label className="text-sm font-medium text-gray-500">Email Address</label>
+            <input value={user.user.email} type="text" disabled={true} className="border-2 rounded-md my-2 p-3 flex-1 bg-gray-100" placeholder="First name" />
+          </div>
+          <div className="flex flex-col flex-1">
+            <label className="text-sm font-medium text-gray-500">Phone Number</label>
+            <input onChange={e => setUpdateInfo(prev => ({ ...prev, phoneNumber: e.target.value }))} value={updateinfo.phoneNumber} type="tel" className="border-2 rounded-md my-2 p-3 flex-1 bg-white" placeholder="Phone number" />
+          </div>
+          <button className="bg-blue-600 p-3 rounded-md text-white w-1/2">update</button>
+        </form>
       </div>
+
     </div>
   );
 }

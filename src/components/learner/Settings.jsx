@@ -42,17 +42,16 @@ export default function Settings() {
         <h1 className="text-2xl py-5 ml-5  font-bold">Settings</h1>
         <div className="border-b mx-5"></div>
       </div>
-      <div className="flex-1 flex -mx-5 ">
-        <div className="w-1/5  flex flex-col">
+      <div className="flex-1 flex flex-col -mx-5 ">
+        <div className="w-full  flex flex-col">
 
           <div className="flex flex-col  pl-5 ">
 
-            <div className="flex-1 flex flex-col space-y-3 text-sm">
+            <div className="flex-1 flex flex-row space-x-3 text-sm">
 
               {menuList.map((menuItem, index) => {
                 return (
-                  <button onClick={e => handleListItemClick(index, menuItem.id)} className={`flex items-center space-x-2 font-regular px-3 text-gray-400  hover:bg-gray-100 hover:rounded-xl hover:text-gray-700 font-medium p-2 transition-all  ${check==index+1 ? 'text-gray-700 bg-gray-100 rounded-xl' :''}`}>
-                    {menuItem.icon()}
+                  <button key={`tab-menue-${index}`} onClick={e => handleListItemClick(index, menuItem.id)} className={`flex items-center space-x-2 font-regular px-3 text-gray-400 hover:rounded-xl hover:text-blue-400 font-medium p-2 transition-all  ${check==index+1 ? 'text-blue-700  rounded-xl' :''}`}>
                     <p>{menuItem.name}</p>
                   </button>
                 );
@@ -62,7 +61,7 @@ export default function Settings() {
           </div>
         </div>
         {/* RENDER PAGES HERE */}
-        <div className="mx-auto w-5/12 bg-white-50 flex space-y-8 border-gray-100 px-5">
+        <div className="mx-auto w-full  flex space-y-8 border-gray-100 px-5">
           {check === 1 && <EditProfile />}
           {check === 2 && <MakePayment />}
         </div>

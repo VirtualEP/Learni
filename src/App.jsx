@@ -25,6 +25,7 @@ import InstructorCourseInfo from "./components/instructor/CourseInfo"
 import InstructorLessons from "./components/instructor/instructorLessons"
 import InstructorEnrolment from "./components/instructor/InstructorEnrolment"
 import Courselo from "./pages/courselo"
+import VerifyPage from "./pages/verify"
 
 
 export const VITE_CLIENT_ID = "1065813839939-vp30ql16pu5nbatco90snth2b6sr8b41.apps.googleusercontent.com";
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/" element={<Landings />} />
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
+          <Route path="/verify/:pubkey" element={<VerifyPage /> }/>
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >
             <Route path="" element={<Overview />} />
             <Route path="overview" element={<Overview />} />

@@ -19,14 +19,8 @@ html{
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-}
-
-.hide-scrollbar ::-webkit-scrollbar{
-    width: 0px !important;
-    height: 0px !important;
-    background-color: transparent !important;
-
+  width: 0px !important;
+  height: 0px !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -42,4 +36,12 @@ html{
 
 ::-webkit-scrollbar-thumb:hover {
   background: 353572 !important;
+}
+
+
+.hide-scrollbar ::-webkit-scrollbar{
+  width: 0px !important;
+  height: 0px !important;
+  background-color: transparent !important;
+
 }

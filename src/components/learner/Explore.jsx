@@ -56,7 +56,7 @@ export default function Explore() {
                     <h1 className="text-2xl pt-5 font-bold">Explore Courses</h1>
 
                 </div>
-                <div className="md:flex hidden items-center flex-row py-3 w-full space-x-4 overflow-x-auto">
+                <div className="md:flex hidden items-center flex-row py-3 w-full space-x-4 overflow-x-auto hide-scrollbar">
                     {
                         selectedTag ?
                             <div className="flex items-center">
