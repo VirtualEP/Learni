@@ -27,7 +27,7 @@ export default function ExploreInfo({ data }) {
     email: user.user.email,
     currency: 'GHS',
     amount: parseFloat(data.price) * 100.0, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-    publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+    publicKey: "pk_live_f4b2dd9594ad0249e23a2a38e07d1a16036157be",
   };
 
   const initializePayment = usePaystackPayment(paymentConfig);
