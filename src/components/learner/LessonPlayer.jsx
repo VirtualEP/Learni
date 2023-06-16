@@ -65,7 +65,7 @@ export default function LessonPlayer({ data, onClose, course }) {
                     <div className=" pt-5">
                         <div className="px-2 md:px-5">
                             {data.type == 'video' && <video ref={playerRef} id="videoPlayer" className='w-full h-[500px] rounded-lg overflow-hidden bg-black' controls controlsList="nodownload" onContextMenu={() => null}>
-                                <source src={`${API_ROUTES}/${data.src}`} type="video/mp4" />
+                                <source src={`${API_ROUTES}/video/${data.src}`} type="video/mp4" />
                             </video>}
                         </div>
                         <div className="px-5 border-b uppercase flex items-center space-x-5 py-5 relative">
