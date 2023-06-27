@@ -23,7 +23,7 @@ function Footer() {
             <a>developers@devtray.net</a>{" "}
           </div>
         </div>
-      </div>
+      </div> 
       <div>
         <p>Copyright © 2023 - All right reserved</p>
       </div>
