@@ -21,13 +21,13 @@ export default function Changelog() {
                 <div className="flex-1">
                     <div className="flex flex-col space-y-4 py-10 px-3 md:px-3 text-center md:text-left">
                         <h3 className="text-4xl font-semibold">What's New</h3>
-                        <p className="text-sm text-gray-400">New updates and improvements to Getlog.</p>
+                        <p className="text-sm text-gray-400">New updates and improvements to DevTray.</p>
                     </div>
                     <div>
                     <LogInfo/>
+                    {/* <LogInfo/>
                     <LogInfo/>
-                    <LogInfo/>
-                    <LogInfo/>
+                    <LogInfo/> */}
                     </div>
                 </div>
             </div>
