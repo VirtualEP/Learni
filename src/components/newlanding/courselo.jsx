@@ -144,7 +144,7 @@ export default function Courselo() {
                 <div className="bg-blue-500 h-2/5 w-full p-3 rounded"></div>
                 <div className="bg-white h-2/4 w-full p-3 rounded">
                 <img
-                    src={cutie}
+                    src="https://i.pinimg.com/564x/f4/b0/d1/f4b0d1a438a3fe0ecc51cd54c17c6693.jpg"
                     alt="blac"
                     className="h-full w-full rounded-md"
                   />
