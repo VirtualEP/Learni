@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeroNavBar from '../landings/HeroNavBar';
 import bgImage from './../../assets/illustration/bg.png';
 import LandFooter from '../landings/Footer';
@@ -7,10 +7,14 @@ import LandFooter from '../landings/Footer';
 export default function PricingPage() {
     const navbar_links = useRef()
     const navbar_actions = useRef()
+    const navigate = useNavigate()
 
     const smToogleOptions = () => {
         navbar_links.current.classList.toggle('hidden');
         navbar_actions.current.classList.toggle('hidden');
+    }
+
+    const getStarted = () => {navigate("/dashboard/explore")
     }
     return (
 
@@ -25,7 +29,7 @@ export default function PricingPage() {
                             <div className='md:h-20 ' />
 
                             <h3 className="text-5xl md:text-7xl text-black font-bold text-center">Get more with Devtray<span className='text-blue-600'>.</span>net</h3>
-                            <p className="text-gray-500 font-bold  text-md text-center">Joing growing community and get peer insights and discover exciting opportunities and collaborations.</p>
+                            <p className="text-gray-500 font-bold  text-md text-center">Join a growing community and get peer insights and discover exciting opportunities and collaborations.</p>
                             <div className='h-10' />
 
 
@@ -59,7 +63,7 @@ export default function PricingPage() {
 
                         <div className='p-5 flex flex-col space-y-2 border-b'>
                             <h2 className='text-2xl font-bold text-gray-600'>Free</h2>
-                            <p className='text-gray-400 font-light text-sm'>Get live class feature with more exclusive features to enhace your learning experience.</p>
+                            <p className='text-gray-400 font-light text-sm'>Enhance your learning experience.</p>
                             <div className='py-3'>
                                 <h3 className='text-2xl font-extrabold text-blue-800'>₵0.00 <span className='text-sm text-gray-500 font-bold'> / month</span></h3>
                             </div>
@@ -95,7 +99,7 @@ export default function PricingPage() {
                         </div>
 
                         <div className='px-5 h-full'>
-                            <button className="bg-gray-200 p-2 w-full rounded font-medium">Get Started</button>
+                            <button className="bg-gray-200 p-2 w-full rounded font-medium" onClick={getStarted}>Get Started</button>
                         </div>
                     </div>
                     <div className='w-4/5 md:w-1/4 pb-5 h-full rounded-3xl bg-blue-600'>
@@ -117,7 +121,7 @@ export default function PricingPage() {
                             <h2 className='text-2xl font-bold text-white'>Exclusive</h2>
                             <p className='text-white font-light text-sm'>Get live class feature with more exclusive features to enhace your learning experience.</p>
                             <div className='py-3'>
-                                <h3 className='text-2xl font-extrabold text-white'>₵5.00 <span className='text-sm text-blue-100 font-bold'> / month</span></h3>
+                                <h3 className='text-2xl font-extrabold text-white'>₵50.00 <span className='text-sm text-blue-100 font-bold'> / month</span></h3>
                             </div>
                         </div>
 
@@ -133,7 +137,7 @@ export default function PricingPage() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <h4>Verrified Badge</h4>
+                                <h4>Verified Badge</h4>
                             </div>
                             <div className='flex space-x-2'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -150,7 +154,7 @@ export default function PricingPage() {
                         </div>
 
                         <div className='px-5 h-full'>
-                            <button className="bg-blue-400 p-2 w-full rounded font-medium text-white">Get Started</button>
+                            <button className="bg-blue-400 p-2 w-full rounded font-medium text-white" onClick={getStarted}>Get Started</button>
                         </div>
 
                     </div>

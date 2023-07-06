@@ -28,7 +28,7 @@ const Hero = () => {
       <div className="w-full flex-col space-y-5 hidden md:flex">
         <div className="flex items-center space-x-5">
           <img src={child} alt="blac" className="h-[250px] w-1/2 rounded-md" />
-          <img src={boy} alt="blac" className="h-[250px] w-1/2 rounded-md" />
+          <img src={boy} alt="blac" className="h-[250px]h-[250px] w-1/2 rounded-md" />
         </div>
         <div className="flex items-center space-x-5">
           <img src={group} alt="blac" className="h-[250px] w-1/2 rounded-md" />
