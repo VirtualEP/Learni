@@ -18,6 +18,7 @@ import {
     TwitterIcon,
     WhatsappIcon,
 } from "react-share";
+import MediaPlayer from '../MediaPlayer';
 
 
 export default function LessonPlayer({ data, onClose, course }) {
@@ -64,13 +65,14 @@ export default function LessonPlayer({ data, onClose, course }) {
                 <div className="flex-1 flex flex-col space-y-5 rounded-md">
                     <div className=" pt-5">
                         <div className="px-2 md:px-5">
-                            {data.type == 'video' && <video ref={playerRef} id="videoPlayer" className='w-full h-[500px] rounded-lg overflow-hidden bg-black' controls controlsList="nodownload" onContextMenu={() => null}>
+                            {data.type == 'video' && <video ref={playerRef} id="videoPlayer" className='w-full h-auto aspect-video rounded-lg overflow-hidden bg-black' controls controlsList="nodownload" onContextMenu={() => null}>
                                 <source src={`${API_ROUTES}/video/${data.src}`} type="video/mp4" />
                             </video>}
+                            
                         </div>
                         <div className="px-5 border-b uppercase flex items-center space-x-5 py-5 relative">
                             <button
-                                 onClick={e=>setShareModal(true)}
+                                onClick={e => setShareModal(true)}
                                 className="flex space-x-2 items-center text-xs">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
@@ -79,7 +81,7 @@ export default function LessonPlayer({ data, onClose, course }) {
                                 <p className="uppercase font-normal text-gray-500">Share course</p>
                             </button>
                             <AnimatePresence>
-                                {shareModal && <motion.div initial={{opacity:0,translateX: -3}}  animate={{opacity:1,translateX:0}} exit={{ opacity: 0, translateX: -3 }} className="animate bg-white absolute left-0 top-12 flex items-center space-x-3 px-2 py-2 shadow-sm rounded">
+                                {shareModal && <motion.div initial={{ opacity: 0, translateX: -3 }} animate={{ opacity: 1, translateX: 0 }} exit={{ opacity: 0, translateX: -3 }} className="animate bg-white absolute left-0 top-12 flex items-center space-x-3 px-2 py-2 shadow-sm rounded">
                                     <TwitterShareButton>
                                         <TwitterIcon size={32} round={true} />
                                     </TwitterShareButton>
@@ -101,9 +103,9 @@ export default function LessonPlayer({ data, onClose, course }) {
                                     <WhatsappShareButton round={true} >
                                         <WhatsappIcon size={32} round={true} />
                                     </WhatsappShareButton>
-                                    <button 
-                                    onClick={e=>setShareModal(false)}
-                                    className="h-8 w-8 shrink-0 rounded-full border bg-slate-500 text-white flex items-center justify-center">
+                                    <button
+                                        onClick={e => setShareModal(false)}
+                                        className="h-8 w-8 shrink-0 rounded-full border bg-slate-500 text-white flex items-center justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                                         </svg>
@@ -153,7 +155,7 @@ export default function LessonPlayer({ data, onClose, course }) {
                         {data.notes.map((data, i) => <p key={`note-${i}`} className='text-gray-600 font-normal leading-relaxed'>
                             {data}
                         </p>)}
-                        <div class="backdrop-blur-lg backdrop-filter bg-white/30 p-5 rounded-md border">
+                        <div className="backdrop-blur-lg backdrop-filter bg-white/30 p-5 rounded-md border">
                             <p className='text-gray-700'>There were no notes available for these <span className='font-medium'>lesson</span> or <span className='font-medium'>video</span>. Once a video is been available you would be able to access it directly from this section.</p>
                         </div>
                     </div>
