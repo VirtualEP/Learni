@@ -94,7 +94,7 @@ export default function Topbar({showSearch}) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="min-h-40 right-5 bg-white shadow-md border absolute w-[220px] top-14 p-3 py-5 flex flex-col space-y-3 text-gray-400 border-gray-100 rounded-md z-10"
+                className="min-h-40 right-5 bg-white shadow-md border absolute w-[220px] top-14 p-3 py-5 flex flex-col space-y-3 text-gray-400 border-gray-100 rounded-md z-0"
               >
                 <div className=" flex flex-col space-y-3 border-gray-100  ">
                   <Link

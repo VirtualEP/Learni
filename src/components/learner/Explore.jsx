@@ -70,7 +70,7 @@ export default function Explore() {
                             </div>
                             : <>
                                 {
-                                    popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data.tag}</button>)
+                                    popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded shrink-0">{data.tag}</button>)
                                 }
                             </>
                     }
@@ -94,7 +94,7 @@ export default function Explore() {
                                 </div>
                                 : <>
                                     {
-                                        popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded w-full">{data.tag}</button>)
+                                        popularTags.map((data, index) => <button onClick={() => setSelectedTag(data.tag)} key={`explore-course-${index}`} className="bg-gray-100 text-gray-600 px-5 py-1 rounded  shrink-0">{data.tag}</button>)
                                     }
                                 </>
                         }

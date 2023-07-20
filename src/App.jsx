@@ -1,6 +1,5 @@
 
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom"
-import { SignupOptions } from "./components"
 import LoginPage from "./pages/login"
 import SignupPage from "./pages/signup"
 import PrivateRoute from "./components/PrivateRoute"
@@ -20,7 +19,6 @@ import CourseLessons from "./components/learner/CourseLessons"
 import CourseExercise from "./components/learner/CourseExercise"
 import CourseQna from "./components/learner/CourseQna"
 import Channel from "./components/learner/Channel"
-import Landings from "./pages/landings"
 import InstructorCourseInfo from "./components/instructor/CourseInfo"
 import InstructorLessons from "./components/instructor/instructorLessons"
 import InstructorEnrolment from "./components/instructor/InstructorEnrolment"
@@ -29,6 +27,7 @@ import VerifyPage from "./pages/verify"
 import PricingPage from "./pages/pricing"
 import BlogPage from "./pages/blog"
 import Changelog from "./pages/changelog"
+
 
 
 export const VITE_CLIENT_ID = "1065813839939-vp30ql16pu5nbatco90snth2b6sr8b41.apps.googleusercontent.com";

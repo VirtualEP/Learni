@@ -4,116 +4,9 @@ import LessonPlayer from './LessonPlayer'
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useParams } from 'react-router'
-import { useServerHook } from '../../hooks/useServerHook'
-import { useLocation } from 'react-router-dom'
-
-const Lessons = [
-    {
-        title: 'Introduction to Web concepts',
-        media: [
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'Introduction to the internet',
-                duration: 6000
-            },
-            {
-                kind: 'image',
-                title: 'Diagram I',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'What is extranet ?',
-                duration: 6000
-            },
-            {
-                kind: 'image',
-                title: 'Diagram II',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'Rules of the web',
-                duration: 6000
-            },
-        ]
-    },
-    {
-        title: 'Introduction to Web Services',
-        media: [
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'image',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-        ]
-    },
-    {
-        title: 'Introduction to Web concepts',
-        media: [
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'image',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-            {
-                kind: 'video',
-                title: 'History of the web',
-                duration: 6000
-            },
-        ]
-    },
-]
+import { API_ROUTES, useServerHook } from '../../hooks/useServerHook'
+import { Link, useLocation } from 'react-router-dom'
+import CustomPlayer from './customPlayer/CustomPlayer'
 
 export default function CourseLessons() {
 
@@ -135,10 +28,10 @@ export default function CourseLessons() {
         }).catch(err => { }).finally(() => { })
     }, [])
 
-    return (<>
+    return (<div className="flex flex-1">
         <div className='flex-1 flex flex-col space-y-5 py-5'>
             <h3 className='font-bold'>Lessons or Contents</h3>
-            <div className='flex-1 md:pl-3  space-y-5 w-full overflow-hidden'>
+            <div className='flex-1 md:pl-3  space-y-5 w-full overflow-x-hidden'>
                 {topics.map((data, index) => <div key={`${index}`} className='flex flex-col space-y-2'>
                     <div className='flex items-center space-x-2'>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-gray-300">
@@ -152,9 +45,11 @@ export default function CourseLessons() {
                 </div>)}
             </div>
         </div>
+
         <AnimatePresence >
-            {showPlayer && <LessonPlayer course={location.state} data={selectedMedia} vissible={showPlayer} onClose={() => setShowPlayer(false)} />}
+            {/* {showPlayer && <LessonPlayer course={location.state} data={selectedMedia} vissible={showPlayer} onClose={() => setShowPlayer(false)} />} */}
+            {showPlayer && <CustomPlayer course={location.state} currentMedia={selectedMedia} vissible={showPlayer} close={() => setShowPlayer(false)} lessons={topics} />}
         </AnimatePresence>
-    </>
+    </div>
     )
 }

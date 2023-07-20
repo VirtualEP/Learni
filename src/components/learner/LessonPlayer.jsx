@@ -28,7 +28,7 @@ export default function LessonPlayer({ data, onClose, course }) {
     const [shareModal, setShareModal] = React.useState(false)
 
     return (
-        <motion.div animate={{ scale: 1, opacity: 1 }} initial={{ scale: 0, opacity: 0 }} exit={{ translateY: 10, opacity: 0 }} className={`flex absolute top-0 left-0 w-screen h-[90vh] md:h-screen bg-gray-100 flex-col flex-1 z-10`}>
+        <motion.div animate={{ scale: 1, opacity: 1 }} initial={{ scale: 0, opacity: 0 }} exit={{ translateY: 10, opacity: 0 }} className={`flex absolute top-0 left-0 w-screen h-[90vh] md:h-screen bg-white flex-col flex-1 z-10`}>
             <div className="bg-white p-5 border-b flex items-center justify-between">
                 <div className="flex items-center space-x-1 px-5 py-1">
                     <svg
@@ -61,7 +61,7 @@ export default function LessonPlayer({ data, onClose, course }) {
                 </button>
 
             </div>
-            <div className="flex-1 flex md:flex-row flex-col ">
+            <div className="flex-1 flex md:flex-row flex-col bg-white">
                 <div className="flex-1 flex flex-col space-y-5 rounded-md">
                     <div className=" pt-5">
                         <div className="px-2 md:px-5">

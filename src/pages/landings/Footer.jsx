@@ -49,7 +49,7 @@ export default function LandFooter() {
             </Link>
           </div>
         </div>
-        <div className="flex-1 flex flex-col md:flex-row space-y-5 ">
+        <div className="flex-1 flex flex-col md:flex-row space-y-5 md:space-y-0">
           <div className="md:w-1/3 flex flex-col space-y-3">
             <h3 className="font-bold text-gray-800">Contact</h3>
             

@@ -79,9 +79,9 @@ function MakePayment() {
           </div>
           <button type="submit" className="bg-blue-600 p-3 rounded-md text-white w-1/2">update</button>
         </form>
-        <div className="border-t mt-5 py-5">
+        <div className="border-t mt-5 py-5 md:hidden">
           <p className="text-gray-500 text-sm my-4">Clicking on the logout button will sign you out of your account on this device.</p>
-          <button onClick={handleLogout} className="bg-red-600 text-red-50 py-3  w-1/2 items-center justify-center rounded-md md:hidden">Logout</button>
+          <button onClick={handleLogout} className="bg-red-600 text-red-50 py-3  w-1/2 items-center justify-center rounded-md ">Logout</button>
         </div>
       </div>
 

@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 
+
+
 html,
-body, * {
+body,
+* {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -12,7 +15,7 @@ body, * {
   box-sizing: border-box;
 }
 
-html{
+html {
   background-color: #ffffff !important;
   color: #000000 !important;
   scroll-behavior: smooth !important;
@@ -25,7 +28,7 @@ html{
 
 ::-webkit-scrollbar-track {
   background: #e0e0e0 !important;
-    border-radius: 10px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -39,9 +42,18 @@ html{
 }
 
 
-.hide-scrollbar ::-webkit-scrollbar{
+.hide-scrollbar ::-webkit-scrollbar {
   width: 0px !important;
   height: 0px !important;
   background-color: transparent !important;
 
+}
+
+
+.full-screen{
+  @apply absolute -top-[16.98vh] md:-top-[10vh] md:-left-[20vw] w-[100vw] h-[100vh] bg-black border-r-0 z-50;
+}
+
+.sm-video {
+  @apply bg-black h-[30vh] md:h-3/5 w-full md:rounded-lg;
 }
