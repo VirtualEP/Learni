@@ -27,6 +27,7 @@ import VerifyPage from "./pages/verify"
 import PricingPage from "./pages/pricing"
 import BlogPage from "./pages/blog"
 import Changelog from "./pages/changelog"
+import VerifyEmail from "./pages/verifyEmail"
 
 
 
@@ -54,9 +55,11 @@ export default function App() {
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/signin" element={<PublicRoute children={<LoginPage />} />} />
           <Route path="/signup" element={<PublicRoute children={<SignupPage />} />} />
+          <Route path="/verify-email" element={<PublicRoute children={<VerifyEmail />} />} />
           <Route path="/blog" element={<PublicRoute children={<BlogPage />} />} />
           <Route path="/changelog" element={<PublicRoute children={<Changelog />} />} />
           <Route path="/verify/:pubkey" element={<VerifyPage /> }/>
+          {/* ... */}
           <Route path="/dashboard" element={<PrivateRoute children={<DashboardScreen />} />} >
             <Route path="" element={<Overview />} />
             <Route path="overview" element={<Overview />} />

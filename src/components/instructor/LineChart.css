@@ -1,0 +1,43 @@
+.chart-container {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Customize tooltip styles */
+  .recharts-tooltip {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Customize tooltip label */
+  .recharts-tooltip-label {
+    font-weight: bold;
+  }
+  
+  /* Customize tooltip value */
+  .recharts-tooltip-item {
+    /* color: #8884d8; */
+    color: #000000;
+  }
+  
+  /* Customize axis labels */
+  .recharts-cartesian-axis-tick {
+    font-size: 14px;
+    fill: #ffffff !important;
+  }
+  
+  /* Customize legend */
+  .recharts-legend {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* Customize line */
+  .recharts-curve {
+    stroke-width: 2;
+  }
+  

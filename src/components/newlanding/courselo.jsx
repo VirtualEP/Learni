@@ -20,8 +20,10 @@ export default function Courselo() {
   const navbar_actions = useRef();
 
   const smToogleOptions = () => {
-    navbar_links.current.classList.toggle("hidden");
-    navbar_actions.current.classList.toggle("hidden");
+    navbar_links.current.classList.toggle("hidden");    
+    navbar_links.current.classList.toggle("flex");
+    navbar_actions.current.classList.toggle("hidden");    
+    navbar_actions.current.classList.toggle("flex");
   };
 
   return (
@@ -74,7 +76,7 @@ export default function Courselo() {
                 </button>
               </div>
 
-              <div ref={navbar_links} className="flex md:flex  bg-gray-900 md:bg-transparent rounded-lg p-3 flex-col space-y-5 md:space-y-0 md:flex-row md:items-center text-white md:space-x-5">
+              <div ref={navbar_links} className="hidden md:flex  bg-gray-900 md:bg-transparent rounded-lg p-3 flex-col space-y-5 md:space-y-0 md:flex-row md:items-center text-white md:space-x-5">
                 <Link to="/dashboard/explore">Courses</Link>
                 <Link to="/pricing">Pricing</Link>
                 <Link to="/blog">Blog</Link>
@@ -83,7 +85,7 @@ export default function Courselo() {
             </div>
             <div
               ref={navbar_actions}
-              className="flex  md:flex items-center text-white space-x-5"
+              className="hidden  md:flex items-center text-white space-x-5"
             >
               <Link
                 className="bg-gray-900 px-10 py-2 rounded md:p-0 md:rounded-none md:bg-transparent"

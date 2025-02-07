@@ -5,10 +5,13 @@ import { Link, NavLink } from "react-router-dom";
 import useAuthHook from "../hooks/authHook";
 import { useAuthContext } from "../context/Auth";
 import { AnimatePresence, motion } from "framer-motion";
+import useColorSchemeDetector from "../hooks/themeHook";
 
 
 export default function LearnerSideBar() {
   const [smMenuShow, setSmMenuShow] = useState(false)
+  const isDarkMode = useColorSchemeDetector();
+
   return (
     <div className="md:w-1/5 border-r flex flex-col">
       <div className="w-full flex flex-col space-y-6 p-3">
@@ -21,7 +24,7 @@ export default function LearnerSideBar() {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-6 h-6 text-black mr-2"
+              className={`w-6 h-6 text-black mr-2`}
             >
               <path
                 strokeLinecap="round"
