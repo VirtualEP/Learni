@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { API_ROUTES } from '../../../hooks/useServerHook'
 import PlayerControls from './PlayerControls'
+import Comments from './Comments'
 
 export default function CustomPlayer({ close, course, currentMedia, lessons }) {
 
@@ -24,7 +25,7 @@ export default function CustomPlayer({ close, course, currentMedia, lessons }) {
     }
 
     return (
-        <div className="flex-1 flex flex-col absolute top-[17vh] h-[83vh] overscroll-y-auto  md:top-[10vh] left-0 md:left-[20vw] w-full md:w-[80vw] md:h-[90vh] ">
+        <div className="flex-1 flex flex-col absolute top-[17vh] h-[83vh] overflow-y-auto  md:top-[10vh] left-0 md:left-[20vw] w-full md:w-[80vw] md:h-[90vh] ">
 
             <div className="flex-1 flex flex-col md:flex-row bg-white">
                 <div className="w-full md:w-4/6 shrink-0 bg-white py-3 flex md:pl-3 cursor-pointer">
@@ -55,10 +56,14 @@ export default function CustomPlayer({ close, course, currentMedia, lessons }) {
                                     <button onClick={e=>setSelectedTab(2)} className={`${selectedTab == 2 ? 'font-semibold text-gray-600' :''}`}>Assigments</button>
                                     {selectedTab ==2 && <div className='h-[1px] w-full bg-blue-300 absolute left-0 -bottom-3' />}
                                 </div>
+                                <div className='flex items-center relative'>
+                                    <button onClick={e=>setSelectedTab(3)} className={`${selectedTab == 3 ? 'font-semibold text-gray-600' :''}`}>Comments</button>
+                                    {selectedTab ==3 && <div className='h-[1px] w-full bg-blue-300 absolute left-0 -bottom-3' />}
+                                </div>
                             </div>
                             <div className=" flex-1 py-5 px-3 md:px-0">
                                 <p className='text-xs leading-relaxed font-light text-gray-500'>
-                                    No content
+                                    <Comments/>
                                 </p>
                             </div>
                         </div>
@@ -73,14 +78,14 @@ export default function CustomPlayer({ close, course, currentMedia, lessons }) {
                         <div className="flex-1 px-5 overflow-y-auto">
                             <div className='h-full text-gray-600 flex flex-col space-y-3 w-full'>
                                 {
-                                    lessons.map((l, index) => <>
+                                    lessons.map((l, index) => <div key={`lesson-${index}`}>
                                         {l.media.map((media, i) => <div onClick={() => setPlayingMedia(media)} key={`lesson-${index}-${i}`} className={`flex items-center justify-between cursor-pointer font-medium ${currentMedia._id == media._id ? 'text-blue-500' : 'text-gray-400'}`}>
                                             {currentMedia._id == media._id && <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 mr-3">
                                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                                             </svg>}
                                             <p className='truncate w-full'><span className="text-gray-400 text-sm pr-2">{1}</span>{media.name.split('.')[0]}</p>
                                         </div>)}
-                                    </>)
+                                    </div>)
                                 }
                             </div>
                         </div>

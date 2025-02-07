@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import useAuthHook from '../hooks/authHook';
-import useNotifyHook from '../hooks/notifyHook';
+import useNotifyHook, { NOTIFICATION_TYPE } from '../hooks/notifyHook';
 import useApiHook from '../hooks/useApiHook';
 
 const AuthContext = createContext();
@@ -23,16 +23,18 @@ export default function AuthContextProvider({ children }) {
 
     const login = (email, password) => {
         setLoading(true)
-        if (!email || !password || email === '' || password === '') return toast("Email and password fields cannot be empty.", "Authentication Error", { leading: false, color: 'red' });
+        if (!email || !password || email === '' || password === '') return toast("Email and password fields cannot be empty.", "Authentication Error", { leading: false, type: NOTIFICATION_TYPE.error });
         signin({ email, password }).then((data) => {
-            console.log(data);
             setUser(data);
-            return toast("Signing in completed successfully.", "Authentication Complete", { leading: false });
+            return toast("Signing in completed successfully.", "Authentication Complete", { leading: false, type: NOTIFICATION_TYPE.success });
         })
             .catch((error) => {
                 console.log(error);
                 setUser(null);
-                return toast("Signin could not be completed. " + error?.response?.data.message, "Authentication Failled", { leading: false, color: 'red' });
+                if (error.code == "ECONNABORTED") {
+                    return toast("Signin could not be completed. Please check your internet connectivity or firewall settings.", "Authentication Failled", { leading: false, type: NOTIFICATION_TYPE.error });
+                }
+                return toast("Signin could not be completed. " + error?.response?.data.message, "Authentication Failled", { leading: false, type: NOTIFICATION_TYPE.error });
             })
             .finally(() => setLoading(false))
     }
@@ -41,8 +43,8 @@ export default function AuthContextProvider({ children }) {
         setLoading(true)
         if (!email || !password || !firstName || !lastName || !country || !type || email === '' || password === '' || firstName === '' || lastName === '' || country === '' || type === '') return toast("Can't have any field empty.", "Form Error", { leading: false });
         signup({ email, password, firstName, lastName, country, type })
-            .then((data) => {  return toast("Account registration completed successfully.", "Authentication Complete", { leading: false }); })
-            .catch((error) => { setUser(null); return toast("Signin could not be completed. " + error.response.data.message, "Authentication Failed", { leading: false, color: 'red' }); })
+            .then((data) => { return toast("Account registration completed successfully.", "Authentication Complete", { leading: false, type: NOTIFICATION_TYPE.success }); })
+            .catch((error) => { setUser(null); return toast("Signin could not be completed. " + error.response.data.message, "Authentication Failed", { leading: false, type: NOTIFICATION_TYPE.error }); })
             .finally(() => setLoading(false))
     }
 
@@ -50,9 +52,9 @@ export default function AuthContextProvider({ children }) {
         setIsAuthenticated(localUser ? true : false)
     }, [localUser])
 
-    const updateProfile = ({email, firstName, lastName}) => {
+    const updateProfile = ({ email, firstName, lastName }) => {
         setLoading(true)
-        if(!firstName, !lastName, !email){
+        if (!firstName, !lastName, !email) {
 
         }
 

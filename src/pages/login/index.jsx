@@ -29,50 +29,30 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex p-4">
-      <div className="bg-white sm:rounded-lg flex justify-center flex-1 ">
-        <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex flex-col ">
-          <div className="flex-1 flex flex-col items-center justify-center">
+    <div className="min-h-screen bg-indigo-100/20 text-gray-900 flex ">
+      <div className="backdrop-blur-[30px] bg-white/50 sm:rounded-lg flex justify-center flex-1 flex-row">
+        <div className="lg:w-1/2 xl:w-6/12 px-6 sm:px-12 flex flex-col space-y-5 py-5">
+          <div className="flex items-center justify-between md:px-5">
+            <Link to="/" className="text-xl font-bold flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+              </svg>
+              <span className="text-gray-600 ml-2">Dev</span>
+              <span className="text-blue-600">Tray</span>
+            </Link>
+            <Link to="/signup" className="underline font-bold text-sm text-center text-gray-800">Create an account</Link>
+          </div>
+
+          <div className="flex-1 flex flex-col items-center justify-center text-center">
             <div className="w-full flex-1 mt-6 flex flex-col justify-center ">
-              {/* GOOGLE LOGIN */}
-              {/* <div className="flex flex-col items-center">
-                <GoogleLogin
-                  clientId={VITE_CLIENT_ID}
-                  buttonText="Sign in with Google"
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  cookiePolicy="single_host_origin"
-                  className={`max-w-xs w-full flex items-center justify-center`}
-                />
-              </div> */}
-              {/* <div className="mb-4 border-b text-center">
-                <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                  Or sign in with e-mail
-                </div>
-              </div> */}
               <form method="POST" onSubmit={(e) => onSignInWithForm(e)}>
-                <div className="mx-auto  max-w-sm">
-                  <div>
-                    <a href="/">
-                      <h1 className="text-2xl cursor-pointer font-bold justify-start flex mb-24">
-                        Dev<span className="text-blue-600 ">Tray</span>
-                      </h1>
-                    </a>
-                  </div>
-                  <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">
-                    {" "}
-                    Welcome Back
-                  </h1>
-                  <div className="w-full flex text-sm mt-4 mb-10">
-                    <p className="font-semibold">New to DevTray?</p>
-                    <Link
-                      to="/signup"
-                      className="font-bold text-sm text-gray-600 no-underline"
-                    >
-                      <span className="ml-2 text-blue-600">
-                        Create an account.
-                      </span>
-                    </Link>
+                <div className="mx-auto  max-w-sm flex flex-col space-y-10">
+
+                  <div className="flex flex-col space-y-5">
+                    <h1 className="text-2xl xl:text-3xl font-semibold leading-loose">Welcome Back</h1>
+                    <div className="w-full flex items-center justify-center text-sm text-center">
+                      <p className="font-normal leading-loose text-gray-500">Calling all Knowledge Seekers! Buckle Up, Log in, and Let the Learning Fiesta Begin!</p>
+                    </div>
                   </div>
                   <div className="flex items-center">
                     <span className="flex items-center justify-center absolute pl-4">
@@ -109,64 +89,51 @@ export default function Login() {
                     <span className="ml-3">Sign In</span>
                   </button>
 
-                  <div className="flex justify-end mt-6">
-                    <label
-                      className="font-bold text-xs underline text-blue-600 cursor-pointer"
-                      href="#"
-                      htmlFor="my-modal-4"
-                    >
-                      Forgot Password?
-                    </label>
-                    <input
-                      type="checkbox"
-                      id="my-modal-4"
-                      className="modal-toggle"
+                  <div className=" border-b text-center">
+                    <div className="leading-none px-3 inline-block text-xs text-gray-400 tracking-wide font-medium bg-white transform translate-y-[70%]">
+                      or
+                    </div>
+                  </div>
+
+                  {/* GOOGLE LOGIN */}
+                  <div className="flex flex-col items-center">
+                    <GoogleLogin
+                      clientId={VITE_CLIENT_ID}
+                      buttonText="Sign in with Google"
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      cookiePolicy="single_host_origin"
+                      className={` w-full flex items-center justify-center`}
                     />
-                    <label
-                      htmlFor="my-modal-4"
-                      className="modal cursor-pointer"
-                    >
-                      <label className="modal-box bg-white relative" htmlFor="">
-                        <h3 className="text-lg font-bold">Reset Password </h3>
-                        <p className="py-2">
-                          You will receive an email to reset your password
-                        </p>
-                        <form method="POST">
-                          <div className="flex flex-col py-2 mt-2">
-                            <input
-                              className="border-2 rounded-lg bg-white  p-3 flex border-blue-100"
-                              name="email"
-                              required
-                              type="email"
-                              placeholder="Enter your email"
-                            />
-                          </div>
-                          <div className="modal-action">
-                            <button
-                              htmlFor="my-modal-6"
-                              className="btn bg-blue-600 border-none text-white"
-                            >
-                              Send mail
-                            </button>
-                          </div>
-                        </form>
-                      </label>
-                    </label>
                   </div>
                 </div>
               </form>
             </div>
           </div>
+          <Link to="/signup" className="underline font-bold text-sm text-center text-gray-800">Forgot password?</Link>
+
         </div>
         {/* Image render */}
         <div
-          className="flex-1 bg-indigo-100 text-center hidden bg-cover lg:flex"
+          className="flex-1 bg-indigo-100 text-center hidden bg-cover lg:flex items-center justify-center my-3 mr-3"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')`,
+            backgroundImage: `url('https://img.freepik.com/free-vector/gradient-glassmorphism_23-2149456191.jpg')`,
           }}
         >
-          <div className="m-12 xl:m-16 w-full bg-contain bg-center justify-center items-center flex bg-no-repeat">
-            {/* <img src={student} /> */}
+          <div className="backdrop-blur-[30px]  bg-white/20 w-3/4 h-2/3 p-20 px-28 flex-col space-y-4">
+            <p className="text-white font-semibold text-left text-6xl leading-tight">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10">
+                  <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                </svg>
+              </span>
+
+              <span>Digital platform for disance</span> <span className="text-black">learning.</span>
+            </p>
+            <div className="text-white/60 text-left text-sm leading-snug">
+              <p>You will never know everything.</p>
+              <p>But you will know more.</p>
+            </div>
           </div>
         </div>
       </div>

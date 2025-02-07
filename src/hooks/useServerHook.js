@@ -1,8 +1,8 @@
 import axios from "axios"
 import { useAuthContext } from "../context/Auth"
 
-export const API_ROUTES = "https://api.devtray.net";
-// export const API_ROUTES = "http://localhost:8080";
+// export const API_ROUTES = "https://api.devtray.net";
+export const API_ROUTES = "http://localhost:8080";
 
 function useServerHook() {
 
@@ -160,7 +160,7 @@ function useServerHook() {
 
 
     const updateprofile = (data) => {
-        return axios.post(`${API_ROUTES}/api/settings/user`,data, {
+        return axios.post(`${API_ROUTES}/api/settings/user`, data, {
             headers: {
                 'authorization': `token ${user.token}`,
                 'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ function useServerHook() {
     }
 
     const updatesecurity = (data) => {
-        return axios.post(`${API_ROUTES}/api/settings/security`,data, {
+        return axios.post(`${API_ROUTES}/api/settings/security`, data, {
             headers: {
                 'authorization': `token ${user.token}`,
                 'Content-Type': 'application/json',
@@ -180,7 +180,21 @@ function useServerHook() {
     }
 
 
-    return { getEnrolled, updatesecurity,updateprofile, getExplores, createCourse, uploadMedia, getTopselling, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses, searchEnrolled, getCourseMedia, purchaseCourse }
+    /* creator functions */
+
+    const getOverview = () => {
+        return axios.get(`${API_ROUTES}/api/creator/overview`,
+            {
+                headers: {
+                    'authorization': `token ${user.token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        )
+    }
+
+
+    return { getEnrolled, getOverview, updatesecurity, updateprofile, getExplores, createCourse, uploadMedia, getTopselling, getTopics, getMyCourses, searchByTag, searchByName, getSingleCourses, searchEnrolled, getCourseMedia, purchaseCourse }
 }
 
 
